@@ -1,0 +1,42 @@
+{
+    "Link Function Route": {
+        "prefix": "aqu-link-func",
+        "body": [
+            "router",
+            "   .route(\"${1:/route}\")",
+            "   .linkFunction((request) async {",
+            "       return Response.ok({$2:{\"status\": \"200 OK\"});",
+            "   });"
+        ]
+    },
+    "Link Route": {
+        "prefix": "aqu-link",
+        "body": [
+            "router",
+            "   .route(\"$1\")",
+            "   .link(() => $2);"
+        ]
+    },
+    "Serve a File": {
+        "prefix": "aqu-file",
+        "body": [
+            "router",
+            "   .route(\"/${1:files}/*\")",
+            "   .link(() => FileController({2:public}/));"
+        ],
+        "description": "Returns the content of a file."
+    },
+    "Simple WebSocket": {
+        "prefix": "aqu-socket",
+        "body": [
+            "router",
+            "    .route(\"/connect\")",
+            "    .linkFunction((req) async {",
+            "        var socket = await WebSocketTransformer.upgrade(req.raw);",
+            "        socket.listen($1);",
+            "        return null;",
+            "    });"
+        ],
+        "description": "Creates a basic websocket server"
+    }
+}

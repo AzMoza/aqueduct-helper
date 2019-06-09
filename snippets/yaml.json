@@ -1,0 +1,14 @@
+{
+    "Config": {
+        "prefix": "aqu-yaml-config",
+        "body": [
+            "database:",
+            "   username: ${1:username}",
+            "   password: ${2:password}",
+            "   port: ${3:5432}",
+            "   databaseName: ${4:dbName}",
+            "   apiBaseURL: /${5:home}",
+            "   identifier: ${6:2}"
+        ]
+    }
+}

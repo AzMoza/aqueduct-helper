@@ -1,0 +1,51 @@
+{
+    "Define a Table": {
+        "prefix": "aqu-model",
+        "body": [
+            "class ${1:Name} extends ManagedObject<_${1:Name}> implements _${1:Name} {}",
+            "",
+            "class _$1 {",
+            "   @Column(primaryKey: true)",
+            "   int id;",
+            "   $2",
+            "}"
+        ],
+        "description": "Defines a table in a database where each property is a row"
+    },
+    "Resource Controller": {
+        "prefix": "aqu-controller",
+        "body": [
+            "class ${1:Name} extends ResourceController {",
+            "   $0",
+            "}"
+        ],
+        "description": "Defines a table in a database where each property is a row"
+    },
+    "Column Annotation": {
+        "prefix": "aqu-column",
+        "body": [
+            "@Column(nullable: ${1:fasle}, unique: ${2:false}, defaultValue: ${3:null})"
+        ],
+        "description": "Create a column annotation"
+    },
+    "Table Annotation": {
+        "prefix": "aqu-table",
+        "body": [
+            "@Table(name: ${1:fasle})"
+        ],
+        "description": "Changes the name of the table definition"
+    },
+    "Transaction": {
+        "prefix": "aqu-transaction",
+        "body": [
+            "try {",
+            "   await context.transaction((transaction) async {",
+            "       $0",
+            "   });",
+            "} on Rollback catch(rolllback) {",
+            "   print(\"${rollback.reason}\");",
+            "}"
+        ],
+        "description": "Creates the basic outline for a transaction"
+    }
+}
