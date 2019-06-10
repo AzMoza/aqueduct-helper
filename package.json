@@ -10,14 +10,21 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.aquModel"
+		"onCommand:extension.aquModel",
+		"onCommand:extension.aquCon"
 	],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [
 			{
 				"command": "extension.aquModel",
-				"title": "Create a Aqueduct Model Class"
+				"title": "Create a Aqueduct Model Class",
+				"when": "editorLangId == dart"
+			},
+			{
+				"command": "extension.aquCon",
+				"title": "Create a Aqueduct Resource Controller",
+				"when": "editorLangId == dart"
 			}
 		],
 		"snippets": [

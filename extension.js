@@ -16,10 +16,7 @@ function activate(context) {
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "aqueduct-snippets" is now active!');
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with  registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('extension.aquModel', async function () {
+	let modelCommand = vscode.commands.registerCommand('extension.aquModel', async function () {
 		if(!vscode.workspace.workspaceFolders) {
 			return vscode.window.showErrorMessage("Please open a directory before running this command");
 		}
@@ -31,34 +28,162 @@ function activate(context) {
 		if(!modelName) return;
 
 		let property = await vscode.window.showInputBox({
-			prompt: "Property Name (Type \"done\" when finished)"
+			prompt: "Property Type and Property Name e.g. String name (Press 'return' when finished)"
 		});
 
 		const properties = [];
 
-		while(property !== 'done') {
+		while(property !== '') {
 			properties.push(property);
 			property = await vscode.window.showInputBox({
-				prompt: "Property Name (Type \"done\" when finished)"
+				prompt: "Property Name (Press 'return' when finished)"
 			});
 		}
-		const decleration = properties.map(prop => `\t\t@Column(nullable: false) String ${prop};\n`);
-		const classContent = `class ${modelName} extends ManagedObject<_${modelName}> implements _${modelName} {}\n\nclass _${modelName} {\n\t${decleration}\n}`;
-		
-		const folderPath = vscode.workspace.workspaceFolders[0].uri.toString().split(":")[1];
 
-		// TODO: Get this to work currently getting a path error which i believe is something to do with [folderPath]
-		fs.writeFile(path.join(folderPath, "model.dart"), classContent, err => {
-			if (err) {
-			  return vscode.window.showErrorMessage(
-				"Failed to create model file!"
-			  );
+		const decleration = properties.map(prop => `@Column(nullable: false) ${prop};\n\t`);
+		const fileContent = `
+// TODO: Update this import with your application name to import all required aqueduct imports.
+import '../application_name.dart';
+
+class ${modelName} extends ManagedObject<_${modelName}> implements _${modelName} {}
+
+class _${modelName} {
+	${decleration.join("")}
+}
+		`
+		
+		const rootFolderPath = vscode.workspace.rootPath;
+		const modelFile = "\\lib\\models";
+
+		const fileName = modelName.toLowerCase() + ".dart";
+
+		const fullPath = path.join(rootFolderPath, modelFile);
+
+		fs.stat(fullPath, function (error) {
+			if (error) {
+				if (error.code === "ENOENT") {
+					fs.mkdir(fullPath, (err) => {
+						if(err) {
+							return vscode.window.showErrorMessage("Thats weird! We cannot create the necessary folders.")
+						} else {
+							fs.writeFile(path.join(fullPath, fileName), fileContent, err => {
+								if (err) {
+									return vscode.window.showErrorMessage(`Oh No! We couldnt create ${fileName}`);
+								}
+								vscode.window.showInformationMessage(`Sorted! Created ${fileName}`);
+							});
+							
+						}
+					})
+				} else {
+					return vscode.window.showErrorMessage("Thats weird! We cannot create the necessary folders.")
+				}
+			} else {
+				fs.writeFile(path.join(fullPath, fileName), fileContent, err => {
+					if (err) {
+						return vscode.window.showErrorMessage(`Oh No! We couldnt create ${fileName}`);
+					}
+					vscode.window.showInformationMessage(`Sorted! Created ${fileName}`);
+				});
 			}
-			vscode.window.showInformationMessage("Created model file");
-		  });
+		});
 	});
 
-	context.subscriptions.push(disposable);
+	let controllerCommand = vscode.commands.registerCommand('extension.aquCon', async function () {
+		if(!vscode.workspace.workspaceFolders) {
+			return vscode.window.showErrorMessage("Please open a directory before running this command");
+		}
+
+		const controllerFileName = await vscode.window.showInputBox({
+			prompt: "Controller File Name (excluding .dart)"
+		});
+
+		const controllerName = await vscode.window.showInputBox({
+			prompt: "Controller Name"
+		});
+
+		if(!controllerName) return;
+
+		let boilerplate = await vscode.window.showInputBox({
+			prompt: "Would you like use to create basic HTTP get, post, put and delete requests? y/n"
+		});
+
+		let fileContent;
+
+		if(boilerplate.toLowerCase() === 'y') {
+			fileContent = `
+		// TODO: Update this import with your application name to import all required aqueduct imports.
+		import '../application_name.dart';
+
+		class ${controllerName} extends ResourceController {
+			@Operation.get()
+			Future<Response> get() async {
+				//TODO: Implement get method
+			}
+
+			@Operation.post()
+			Future<Response> post() async {
+				//TODO: Implement post method
+			}
+
+			@Operation.put()
+			Future<Response> put() async {
+				//TODO: Implement put method
+			}
+
+			@Operation.delete()
+			Future<Response> delete() async {
+				//TODO: Implement delete method
+			}
+		}`
+		} else {
+			fileContent = `
+		// TODO: Update this import with your application name to import all required aqueduct imports.
+		import '../application_name.dart';
+
+		class ${controllerName} extends ResourceController {
+
+		}`
+		}
+	
+		const rootFolderPath = vscode.workspace.rootPath;
+		const controllerFile = "\\lib\\controllers";
+
+		const fileName = controllerFileName.toLowerCase() + ".dart";
+
+		const fullPath = path.join(rootFolderPath, controllerFile);
+
+		fs.stat(fullPath, function (error) {
+			if (error) {
+				if (error.code === "ENOENT") {
+					fs.mkdir(fullPath, (err) => {
+						if(err) {
+							return vscode.window.showErrorMessage("Thats weird! We cannot create the necessary folders.")
+						} else {
+							fs.writeFile(path.join(fullPath, fileName), fileContent, err => {
+								if (err) {
+									return vscode.window.showErrorMessage(`Oh No! We couldnt create ${fileName}`);
+								}
+								vscode.window.showInformationMessage(`Hell Yeah! Created ${fileName}`);
+							});
+							
+						}
+					})
+				} else {
+					return vscode.window.showErrorMessage("Thats weird! We cannot create the necessary folders.")
+				}
+			} else {
+				fs.writeFile(path.join(fullPath, fileName), fileContent, err => {
+					if (err) {
+						return vscode.window.showErrorMessage(`Oh No! We couldnt create ${fileName}`);
+					}
+					vscode.window.showInformationMessage(`Whoop! Created ${fileName}`);
+				});
+			}
+		});
+	});
+
+	context.subscriptions.push(modelCommand, controllerCommand);
 }
 exports.activate = activate;
 
