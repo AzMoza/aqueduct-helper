@@ -11,12 +11,7 @@ const path = require('path');
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "aqueduct-snippets" is now active!');
-
-	let modelCommand = vscode.commands.registerCommand('extension.aquModel', async function () {
+	let disposableModelCommand = vscode.commands.registerCommand('extension.aquModel', async function () {
 		if(!vscode.workspace.workspaceFolders) {
 			return vscode.window.showErrorMessage("Please open a directory before running this command");
 		}
@@ -89,7 +84,7 @@ class _${modelName} {
 		});
 	});
 
-	let controllerCommand = vscode.commands.registerCommand('extension.aquCon', async function () {
+	let disposableControllerCommand = vscode.commands.registerCommand('extension.aquCon', async function () {
 		if(!vscode.workspace.workspaceFolders) {
 			return vscode.window.showErrorMessage("Please open a directory before running this command");
 		}
@@ -183,7 +178,8 @@ class _${modelName} {
 		});
 	});
 
-	context.subscriptions.push(modelCommand, controllerCommand);
+	context.subscriptions.push(disposableModelCommand);
+	context.subscriptions.push(disposableControllerCommand);
 }
 exports.activate = activate;
 

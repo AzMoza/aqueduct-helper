@@ -7,7 +7,8 @@
             "   .linkFunction((request) async {",
             "       return Response.ok({$2:{\"status\": \"200 OK\"});",
             "   });"
-        ]
+        ],
+        "description": "Creates a basic link function."
     },
     "Link Route": {
         "prefix": "aqu-link",
@@ -15,7 +16,8 @@
             "router",
             "   .route(\"$1\")",
             "   .link(() => $2);"
-        ]
+        ],
+        "description": "Creates a basic link route."
     },
     "Serve a File": {
         "prefix": "aqu-file",
@@ -37,6 +39,6 @@
             "        return null;",
             "    });"
         ],
-        "description": "Creates a basic websocket server"
+        "description": "Creates a basic websocket server."
     }
 }

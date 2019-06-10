@@ -9,6 +9,7 @@
             "   databaseName: ${4:dbName}",
             "   apiBaseURL: /${5:home}",
             "   identifier: ${6:2}"
-        ]
+        ],
+        "description": "Creates a basic YAML configuration file"
     }
 }

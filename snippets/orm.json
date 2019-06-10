@@ -10,7 +10,7 @@
             "   $2",
             "}"
         ],
-        "description": "Defines a table in a database where each property is a row"
+        "description": "Creates a basic model that replicates a database table."
     },
     "Resource Controller": {
         "prefix": "aqu-controller",
@@ -19,21 +19,21 @@
             "   $0",
             "}"
         ],
-        "description": "Defines a table in a database where each property is a row"
+        "description": "Creates a basic resource controller."
     },
     "Column Annotation": {
         "prefix": "aqu-column",
         "body": [
             "@Column(nullable: ${1:fasle}, unique: ${2:false}, defaultValue: ${3:null})"
         ],
-        "description": "Create a column annotation"
+        "description": "Creates a column annotation."
     },
     "Table Annotation": {
         "prefix": "aqu-table",
         "body": [
             "@Table(name: ${1:fasle})"
         ],
-        "description": "Changes the name of the table definition"
+        "description": "Changes the name of the table definition."
     },
     "Transaction": {
         "prefix": "aqu-transaction",
@@ -46,6 +46,6 @@
             "   print(\"${rollback.reason}\");",
             "}"
         ],
-        "description": "Creates the basic outline for a transaction"
+        "description": "Creates the basic transaction."
     }
 }

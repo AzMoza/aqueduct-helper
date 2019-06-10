@@ -1,65 +1,46 @@
-# aqueduct-snippets README
+# Aqueduct Snippets README
+This is the README for Aqueduct Snippets. This extension aims to help speed up API development when using the aqueduct framework.
 
-This is the README for your extension "aqueduct-snippets". After writing up a brief description, we recommend including the following sections.
+### Useful Links
+[Aqueduct Documentation](https://www.google.com)
+[Dart Documentation](https://www.google.com)
 
 ## Features
-
 Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
 
-For example if there is an image subfolder under your extension project workspace:
+#### Snippets
+Find below all the possible snippets you can use while creating your APIs.
 
-\!\[feature X\]\(images/feature-x.png\)
+##### Configuration
+- `aqu-config`: Creates a subclass for reading configuration file.
+- `aqu-yaml-config`: Creates a basic YAML configuration file.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+##### HTTP
+- `aqu-link-func`: Creates a basic link function.
+- `aqu-link`: Creates a basic link route.
+- `aqu-file`: Returns the content of a file.
+- `aqu-socket`: Creates a basic websocket server.
 
-## Requirements
+##### ORM
+- `aqu-model`: Creates a basic model that replicates a database table.
+- `aqu-controller`: Creates a basic resource controller.
+- `aqu-column`: Creates a column annotation.
+- `aqu-table`: Changes the name of the table definition.
+- `aqu-transaction`: Creates the basic transaction.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+##### Auth
+- `aqu-auth-token`: Creates a protected route.
+- `aqu-auth-bearer`: Creates a protected route with an OAuth 2.0 bearer token.
+- `aqu-auth-basic`: Creates a protected route with basic HTTP Authentication.
 
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
+#### Commands
+- `aquModel`: Creates a customisable model file.
+- `aquCon`: Creates a customisable controller file.
+    - You will have the option to include a get, post, put and delete request.
 
 ## Release Notes
+All notable changes to Aqueduct Snippets will be documented here.
 
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+#### [1.0.0] - 2019-06-10
+##### Added
+- Initial release

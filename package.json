@@ -3,12 +3,20 @@
 	"displayName": "Aqueduct Snippets",
 	"description": "A collection of snippets to help speed up API development with the Aqueduct framework.",
 	"version": "0.0.1",
+	"icon": "images/aqu-snippets.png",
+	"publisher": "AzMoza",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/AzMoza/aqueduct-snippets.git"
+	},
+	"bugs": {
+		"url": "https://github.com/AzMoza/aqueduct-snippets/issues"
+	},
 	"engines": {
 		"vscode": "^1.35.0"
 	},
-	"categories": [
-		"Other"
-	],
+	"categories": ["Other", "Snippets"],
+	"keywords": ["Dart", "API", "Aqueduct", "Flutter", "Snippets", "REST"],
 	"activationEvents": [
 		"onCommand:extension.aquModel",
 		"onCommand:extension.aquCon"
