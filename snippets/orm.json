@@ -35,6 +35,13 @@
         ],
         "description": "Changes the name of the table definition."
     },
+    "Primary Key": {
+        "prefix": "aqu-pk",
+        "body": [
+            "@Column(primaryKey: true) int ${1:id}"
+        ],
+        "description": "Creates a primary key."
+    },
     "Transaction": {
         "prefix": "aqu-transaction",
         "body": [

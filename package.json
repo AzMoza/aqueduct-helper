@@ -1,9 +1,8 @@
 {
-	"name": "aqueduct-snippets",
-	"displayName": "Aqueduct Snippets",
+	"name": "aqueduct-helper",
+	"displayName": "Aqueduct Helper",
 	"description": "A collection of snippets and commands to help speed up API development with the Aqueduct framework.",
 	"version": "0.0.1",
-	"icon": "images/aqu-snippets.png",
 	"publisher": "AzMoza",
 	"repository": {
 		"type": "git",

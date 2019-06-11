@@ -1,5 +1,5 @@
-# Aqueduct Snippets README
-This is the README for Aqueduct Snippets. This extension aims to help speed up API development when using the aqueduct framework.
+# Aqueduct Helper README
+This is the README for Aqueduct Helper. This extension aims to help speed up API development when using the aqueduct framework.
 
 ### Useful Links
 Find below a list of useful links to help you get started.
@@ -7,10 +7,7 @@ Find below a list of useful links to help you get started.
 - [Aqueduct Tutorial](https://aqueduct.io/docs/tut/getting-started/)
 - [Dart Documentation](https://dart.dev/guides)
 
-## Features
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-![Aqueduct Model Creator command](/images/model_command.gif)
+![Aqueduct Model Creator command](./images/model_command.gif)
 
 #### Snippets
 Find below all the possible snippets you can use while creating your APIs.
@@ -30,6 +27,7 @@ Find below all the possible snippets you can use while creating your APIs.
 - `aqu-controller`: Creates a basic resource controller.
 - `aqu-column`: Creates a column annotation.
 - `aqu-table`: Changes the name of the table definition.
+- `aqu-pk`: Creates a primary key.
 - `aqu-transaction`: Creates the basic transaction.
 
 ##### Auth
@@ -45,7 +43,7 @@ Find below all the possible commands you can use while creating your APIs. To us
     - You will have the option to include a get, post, put and delete request.
 
 ## Release Notes
-All notable changes to Aqueduct Snippets will be documented here.
+All notable changes to Aqueduct Helper will be documented here.
 
 #### [1.0.0] - 2019-06-11
 ##### Added
