@@ -29,14 +29,14 @@ module.exports = {
 
         const decleration = properties.map(prop => `@Column(nullable: false) ${prop};\n\t`);
         const fileContent = `
-    // TODO: Update this import with your application name to import all required aqueduct imports.
-    import '../application_name.dart';
+// TODO: Update this import with your application name to import all required aqueduct imports.
+import '../application_name.dart';
     
-    class ${modelName} extends ManagedObject<_${modelName}> implements _${modelName} {}
+class ${modelName} extends ManagedObject<_${modelName}> implements _${modelName} {}
     
-    class _${modelName} {
+class _${modelName} {
     ${decleration.join("")}
-    }
+}
         `
 
         const rootFolderPath = vscode.workspace.rootPath;
@@ -88,8 +88,8 @@ module.exports = {
                                 vscode.window.showInformationMessage(`Sorted! Created ${fileName}`);
                             }); 
                         } else {
-                            let overwritePrevented = false;
-                            while(overwritePrevented === false) {
+                            let overrideAvoided = false;
+                            do {
                                 console.log("Changing file name");
                                 let newModelName = await vscode.window.showInputBox({
                                     prompt: "New Model Name"
@@ -104,11 +104,11 @@ module.exports = {
                                                 return vscode.window.showErrorMessage(`Oh No! We couldnt create ${fileName}`);
                                             }
                                             vscode.window.showInformationMessage(`Sorted! Created ${fileName}`); 
-                                            overwritePrevented = true;
+                                            overrideAvoided = true;
                                         });
                                     }
                                 }) 
-                            }
+                            } while(overrideAvoided === true)
                         }
                     }
                 })

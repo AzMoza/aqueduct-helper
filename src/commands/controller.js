@@ -26,30 +26,30 @@ module.exports = {
 
 		if (boilerplate.toLowerCase() === 'y') {
 			fileContent = `
-		// TODO: Update this import with your application name to import all required aqueduct imports.
-		import '../application_name.dart';
+// TODO: Update this import with your application name to import all required aqueduct imports.
+import '../application_name.dart';
 
-		class ${controllerName} extends ResourceController {
-			@Operation.get()
-			Future<Response> get() async {
-				//TODO: Implement get method
-			}
+class ${controllerName} extends ResourceController {
+    @Operation.get()
+    Future<Response> get() async {
+        //TODO: Implement get method
+    }
 
-			@Operation.post()
-			Future<Response> post() async {
-				//TODO: Implement post method
-			}
+    @Operation.post()
+    Future<Response> post() async {
+        //TODO: Implement post method
+    }
 
-			@Operation.put()
-			Future<Response> put() async {
-				//TODO: Implement put method
-			}
+    @Operation.put()
+    Future<Response> put() async {
+        //TODO: Implement put method
+    }
 
-			@Operation.delete()
-			Future<Response> delete() async {
-				//TODO: Implement delete method
-			}
-		}`
+    @Operation.delete()
+    Future<Response> delete() async {
+        //TODO: Implement delete method
+    }
+}`
 		} else {
 			fileContent = `
 		// TODO: Update this import with your application name to import all required aqueduct imports.
@@ -87,13 +87,52 @@ module.exports = {
 					return vscode.window.showErrorMessage("Thats weird! We cannot create the necessary folders.")
 				}
 			} else {
-				fs.writeFile(path.join(fullPath, fileName), fileContent, err => {
-					if (err) {
-						return vscode.window.showErrorMessage(`Oh No! We couldnt create ${fileName}`);
-					}
-					vscode.window.showInformationMessage(`Whoop! Created ${fileName}`);
-				});
+				fs.access(path.join(fullPath, fileName), fs.constants.F_OK, async function (err) {
+                    if (err) {
+                        fs.writeFile(path.join(fullPath, fileName), fileContent, err => {
+                            if (err) {
+                                return vscode.window.showErrorMessage(`Oh No! We couldnt create ${fileName}`);
+                            }
+                            return vscode.window.showInformationMessage(`Sorted! Created ${fileName}`);
+                        }); 
+                    } else {
+                        const override = await vscode.window.showInputBox({
+                            prompt: "A file already exists with the choosen name. Would you like to override it? y/n"
+                        });
+        
+                        if(override.toLowerCase() === "y") {
+                            console.log("Overwritting file");
+                            fs.writeFile(path.join(fullPath, fileName), fileContent, err => {
+                                if (err) {
+                                    return vscode.window.showErrorMessage(`Oh No! We couldnt create ${fileName}`);
+                                }
+                                vscode.window.showInformationMessage(`Sorted! Created ${fileName}`);
+                            }); 
+                        } else {
+                            let overwritePrevented = false;
+                            do {
+                                let newControllerName = await vscode.window.showInputBox({
+                                    prompt: "New Controller File Name (excluding .dart)"
+                                });
+        
+                                let overwritefileName = `${newControllerName.toLowerCase()}.dart`
+        
+                                fs.access(path.join(fullPath, overwritefileName), fs.constants.F_OK, async function (err) {
+                                    if(err) {
+                                        fs.writeFile(path.join(fullPath, overwritefileName), fileContent, err => {
+                                            if (err) {
+                                                return vscode.window.showErrorMessage(`Oh No! We couldnt create ${fileName}`);
+                                            }            
+                                            vscode.window.showInformationMessage(`Sorted! Created ${fileName}`); 
+                                            overwritePrevented = true;
+                                        });
+                                    }
+                                }) 
+                            } while(overwritePrevented === true)
+                        }
+                    }
+                });
 			}
-		});
+        });
     }
 }
