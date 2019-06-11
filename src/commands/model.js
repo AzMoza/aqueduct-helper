@@ -1,0 +1,118 @@
+const vscode = require('vscode');
+const fs = require('fs');
+const path = require('path');
+
+module.exports = {
+    command: async function () {
+        if (!vscode.workspace.workspaceFolders) {
+            return vscode.window.showErrorMessage("Please open a directory before running this command");
+        }
+
+        let modelName = await vscode.window.showInputBox({
+            prompt: "Model Name"
+        });
+
+        if (!modelName) return;
+
+        let property = await vscode.window.showInputBox({
+            prompt: "Property Type and Property Name e.g. String name (Press 'return' when finished)"
+        });
+
+        const properties = [];
+
+        while (property !== '') {
+            properties.push(property);
+            property = await vscode.window.showInputBox({
+                prompt: "Property Name (Press 'return' when finished)"
+            });
+        }
+
+        const decleration = properties.map(prop => `@Column(nullable: false) ${prop};\n\t`);
+        const fileContent = `
+    // TODO: Update this import with your application name to import all required aqueduct imports.
+    import '../application_name.dart';
+    
+    class ${modelName} extends ManagedObject<_${modelName}> implements _${modelName} {}
+    
+    class _${modelName} {
+    ${decleration.join("")}
+    }
+        `
+
+        const rootFolderPath = vscode.workspace.rootPath;
+        const modelFile = "\\lib\\models";
+
+        const fileName = modelName.toLowerCase() + ".dart";
+
+        const fullPath = path.join(rootFolderPath, modelFile);
+
+        fs.stat(fullPath, function (error) {
+            if (error) {
+                if (error.code === "ENOENT") {
+                    fs.mkdir(fullPath, (err) => {
+                        if (err) {
+                            return vscode.window.showErrorMessage("Thats weird! We cannot create the necessary folders.")
+                        } else {
+                            fs.writeFile(path.join(fullPath, fileName), fileContent, err => {
+                                if (err) {
+                                    return vscode.window.showErrorMessage(`Oh No! We couldnt create ${fileName}`);
+                                }
+                                console.log(path.join(fullPath, fileName))
+                                vscode.window.showInformationMessage(`Sorted! Created ${fileName}`);
+                            });
+                        }
+                    })
+                } else {
+                    return vscode.window.showErrorMessage("Thats weird! We cannot create the necessary folders.")
+                }
+            } else {
+                fs.access(path.join(fullPath, fileName), fs.constants.F_OK, async function (err) {
+                    if (err) {
+                        fs.writeFile(path.join(fullPath, fileName), fileContent, err => {
+                            if (err) {
+                                return vscode.window.showErrorMessage(`Oh No! We couldnt create ${fileName}`);
+                            }
+                            return vscode.window.showInformationMessage(`Sorted! Created ${fileName}`);
+                        }); 
+                    } else {
+                        const override = await vscode.window.showInputBox({
+                            prompt: "A file already exists with the choosen name. Would you like to override it? y/n"
+                        });
+    
+                        if(override.toLowerCase() === "y") {
+                            console.log("Overwritting file");
+                            fs.writeFile(path.join(fullPath, fileName), fileContent, err => {
+                                if (err) {
+                                    return vscode.window.showErrorMessage(`Oh No! We couldnt create ${fileName}`);
+                                }
+                                vscode.window.showInformationMessage(`Sorted! Created ${fileName}`);
+                            }); 
+                        } else {
+                            let overwritePrevented = false;
+                            while(overwritePrevented === false) {
+                                console.log("Changing file name");
+                                let newModelName = await vscode.window.showInputBox({
+                                    prompt: "New Model Name"
+                                });
+    
+                                let overwritefileName = `${newModelName.toLowerCase()}.dart`
+    
+                                fs.access(path.join(fullPath, overwritefileName), fs.constants.F_OK, async function (err) {
+                                    if(err) {
+                                        fs.writeFile(path.join(fullPath, overwritefileName), fileContent, err => {
+                                            if (err) {
+                                                return vscode.window.showErrorMessage(`Oh No! We couldnt create ${fileName}`);
+                                            }
+                                            vscode.window.showInformationMessage(`Sorted! Created ${fileName}`); 
+                                            overwritePrevented = true;
+                                        });
+                                    }
+                                }) 
+                            }
+                        }
+                    }
+                })
+            }
+        });
+    }
+}
