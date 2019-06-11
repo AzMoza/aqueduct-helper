@@ -33,7 +33,7 @@ Find below all the possible snippets you can use while creating your APIs.
 - `aqu-transaction`: Creates the basic transaction.
 
 ##### Auth
-- `aqu-auth-token`: Creates a protected route.
+- `aqu-auth-token`: Creates a auth token route that grants and refreshes tokens.
 - `aqu-auth-bearer`: Creates a protected route with an OAuth 2.0 bearer token.
 - `aqu-auth-basic`: Creates a protected route with basic HTTP Authentication.
 
@@ -47,6 +47,6 @@ Find below all the possible commands you can use while creating your APIs. To us
 ## Release Notes
 All notable changes to Aqueduct Snippets will be documented here.
 
-#### [1.0.0] - 2019-06-10
+#### [1.0.0] - 2019-06-11
 ##### Added
 - Initial release

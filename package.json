@@ -1,7 +1,7 @@
 {
 	"name": "aqueduct-snippets",
 	"displayName": "Aqueduct Snippets",
-	"description": "A collection of snippets to help speed up API development with the Aqueduct framework.",
+	"description": "A collection of snippets and commands to help speed up API development with the Aqueduct framework.",
 	"version": "0.0.1",
 	"icon": "images/aqu-snippets.png",
 	"publisher": "AzMoza",
@@ -21,7 +21,7 @@
 		"onCommand:extension.aquModel",
 		"onCommand:extension.aquCon"
 	],
-	"main": "./extension.js",
+	"main": "./src/extension.js",
 	"contributes": {
 		"commands": [
 			{

@@ -8,8 +8,12 @@ module.exports = {
             return vscode.window.showErrorMessage("Please open a directory before running this command");
         }
 
+        const modelFileName = await vscode.window.showInputBox({
+			prompt: "Model File Name (excluding .dart)"
+		});
+
         let modelName = await vscode.window.showInputBox({
-            prompt: "Model Name"
+            prompt: "The name of your Model"
         });
 
         if (!modelName) return;
@@ -38,11 +42,10 @@ class _${modelName} {
     ${decleration.join("")}
 }
         `
-
         const rootFolderPath = vscode.workspace.rootPath;
         const modelFile = "\\lib\\models";
 
-        const fileName = modelName.toLowerCase() + ".dart";
+        const fileName = modelFileName.toLowerCase() + ".dart";
 
         const fullPath = path.join(rootFolderPath, modelFile);
 
@@ -92,7 +95,7 @@ class _${modelName} {
                             do {
                                 console.log("Changing file name");
                                 let newModelName = await vscode.window.showInputBox({
-                                    prompt: "New Model Name"
+                                    prompt: "New Model File Name (excluding .dart)"
                                 });
     
                                 let overwritefileName = `${newModelName.toLowerCase()}.dart`
@@ -101,9 +104,9 @@ class _${modelName} {
                                     if(err) {
                                         fs.writeFile(path.join(fullPath, overwritefileName), fileContent, err => {
                                             if (err) {
-                                                return vscode.window.showErrorMessage(`Oh No! We couldnt create ${fileName}`);
+                                                return vscode.window.showErrorMessage(`Oh No! We couldnt create ${overwritefileName}`);
                                             }
-                                            vscode.window.showInformationMessage(`Sorted! Created ${fileName}`); 
+                                            vscode.window.showInformationMessage(`Sorted! Created ${overwritefileName}`); 
                                             overrideAvoided = true;
                                         });
                                     }

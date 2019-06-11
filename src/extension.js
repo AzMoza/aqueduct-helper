@@ -4,8 +4,8 @@ const vscode = require('vscode');
 const fs = require('fs');
 const path = require('path');
 
-const model = require('./src/commands/model.js')
-const controller = require('./src/commands/controller.js')
+const model = require('./commands/model.js')
+const controller = require('./commands/controller.js')
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
