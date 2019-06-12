@@ -31,7 +31,7 @@ module.exports = {
             });
         }
 
-        const decleration = properties.map(prop => `@Column(nullable: false) ${prop};\n\t`);
+        const decleration = properties.map(prop => `\t@Column(nullable: false) ${prop};\n`);
         const fileContent = `
 // TODO: Update this import with your application name to import all required aqueduct imports.
 import '../application_name.dart';
@@ -39,7 +39,7 @@ import '../application_name.dart';
 class ${modelName} extends ManagedObject<_${modelName}> implements _${modelName} {}
     
 class _${modelName} {
-    ${decleration.join("")}
+${decleration.join("")}
 }
         `
         const rootFolderPath = vscode.workspace.rootPath;
@@ -47,7 +47,7 @@ class _${modelName} {
 
         const fileName = modelFileName.toLowerCase() + ".dart";
 
-        const fullPath = path.normalize(path.join(rootFolderPath, modelFile));
+        const fullPath = path.join(rootFolderPath, modelFile);
 
         fs.stat(fullPath, function (error) {
             if (error) {
