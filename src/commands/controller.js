@@ -61,11 +61,11 @@ class ${controllerName} extends ResourceController {
 		}
 
 		const rootFolderPath = vscode.workspace.rootPath;
-		const controllerFile = "\\lib\\controllers";
+		const controllerFile = "/lib/controllers";
 
 		const fileName = controllerFileName.toLowerCase() + ".dart";
 
-		const fullPath = path.join(rootFolderPath, controllerFile);
+		const fullPath = path.normalize(path.join(rootFolderPath, controllerFile));
 
 		fs.stat(fullPath, function (error) {
 			if (error) {

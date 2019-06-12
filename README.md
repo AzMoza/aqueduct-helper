@@ -45,6 +45,10 @@ Find below all the possible commands you can use while creating your APIs. To us
 ## Release Notes
 All notable changes to Aqueduct Helper will be documented here.
 
-#### [1.0.0] - 2019-06-11
+#### [0.0.1] - 2019-06-11
 ##### Added
 - Initial release
+
+#### [0.0.2] - 2019-06-11
+##### Fixed
+- Mac OS files being created in the wrong directory

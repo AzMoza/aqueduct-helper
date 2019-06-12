@@ -43,11 +43,11 @@ class _${modelName} {
 }
         `
         const rootFolderPath = vscode.workspace.rootPath;
-        const modelFile = "\\lib\\models";
+        const modelFile = "/lib/models";
 
         const fileName = modelFileName.toLowerCase() + ".dart";
 
-        const fullPath = path.join(rootFolderPath, modelFile);
+        const fullPath = path.normalize(path.join(rootFolderPath, modelFile));
 
         fs.stat(fullPath, function (error) {
             if (error) {
