@@ -1,5 +1,5 @@
 # Aqueduct Helper README
-This is the README for Aqueduct Helper. This extension aims to help speed up API development when using the aqueduct framework.
+This is the README for Aqueduct Helper. This extension helps speed up API development when using the Aqueduct framework.
 
 ### Useful Links
 Find below a list of useful links to help you get started.
@@ -9,7 +9,7 @@ Find below a list of useful links to help you get started.
 
 ![Aqueduct Model Creator command](./images/model_command.gif)
 
-#### Snippets
+## Snippets
 Find below all the possible snippets you can use while creating your APIs.
 
 ##### Configuration
@@ -35,7 +35,7 @@ Find below all the possible snippets you can use while creating your APIs.
 - `aqu-auth-bearer`: Creates a protected route with an OAuth 2.0 bearer token.
 - `aqu-auth-basic`: Creates a protected route with basic HTTP Authentication.
 
-#### Commands
+## Commands
 Find below all the possible commands you can use while creating your APIs. To use press <kbd>CTRL</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on Windows or <kbd>⌘ Command</kbd>+<kbd>⇧ Shift</kbd>+<kbd>P</kbd> on Mac
 
 - `aquModel`: Creates a customisable model file.
@@ -43,12 +43,6 @@ Find below all the possible commands you can use while creating your APIs. To us
     - You will have the option to include a get, post, put and delete request.
 
 ## Release Notes
-All notable changes to Aqueduct Helper will be documented here.
+All notable changes to Aqueduct Helper will be documented [here](https://marketplace.visualstudio.com/items/AzMoza.aqueduct-helper/changelog).
 
-#### [0.0.1] - 2019-06-11
-##### Added
-- Initial release
-
-#### [0.0.2] - 2019-06-11
-##### Fixed
-- Mac OS files being created in the wrong directory
+**Enjoy!**

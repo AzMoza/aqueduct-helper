@@ -4,6 +4,7 @@
 	"description": "A collection of snippets and commands to help speed up API development with the Aqueduct framework.",
 	"version": "0.0.2",
 	"publisher": "AzMoza",
+	"icon": "images/aqu-icon.png",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/AzMoza/aqueduct-snippets.git"
