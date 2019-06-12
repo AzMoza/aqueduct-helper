@@ -52,12 +52,12 @@ class ${controllerName} extends ResourceController {
 }`
 		} else {
 			fileContent = `
-		// TODO: Update this import with your application name to import all required aqueduct imports.
-		import '../application_name.dart';
+// TODO: Update this import with your application name to import all required aqueduct imports.
+import '../application_name.dart';
 
-		class ${controllerName} extends ResourceController {
+class ${controllerName} extends ResourceController {
 
-		}`
+}`
 		}
 
 		const rootFolderPath = vscode.workspace.rootPath;

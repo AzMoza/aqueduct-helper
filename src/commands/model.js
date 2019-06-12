@@ -9,17 +9,17 @@ module.exports = {
         }
 
         const modelFileName = await vscode.window.showInputBox({
-			prompt: "Model File Name (excluding .dart)"
+			prompt: "Enter the name of your model file (excluding .dart)"
 		});
 
         let modelName = await vscode.window.showInputBox({
-            prompt: "The name of your Model"
+            prompt: "Enter the name of your model"
         });
 
         if (!modelName) return;
 
         let property = await vscode.window.showInputBox({
-            prompt: "Property Type and Property Name e.g. String name (Press 'return' when finished)"
+            prompt: "Property Type and Property Name e.g. String name - exclude ';' (Press 'return' when finished)"
         });
 
         const properties = [];
@@ -27,7 +27,7 @@ module.exports = {
         while (property !== '') {
             properties.push(property);
             property = await vscode.window.showInputBox({
-                prompt: "Property Name (Press 'return' when finished)"
+                prompt: "Property Type and Property Name e.g. String name - exclude ';' (Press 'return' when finished)"
             });
         }
 
