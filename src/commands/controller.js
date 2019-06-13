@@ -109,26 +109,25 @@ class ${controllerName} extends ResourceController {
                                 vscode.window.showInformationMessage(`Sorted! Created ${fileName}`);
                             }); 
                         } else {
-                            let overwritePrevented = false;
-                            do {
+                            let overwriteIncomplete = true;
+                            while(overwriteIncomplete) {
                                 let newControllerName = await vscode.window.showInputBox({
                                     prompt: "New Controller File Name (excluding .dart)"
                                 });
         
-                                let overwritefileName = `${newControllerName.toLowerCase()}.dart`
-        
-                                fs.access(path.join(fullPath, overwritefileName), fs.constants.F_OK, async function (err) {
-                                    if(err) {
-                                        fs.writeFile(path.join(fullPath, overwritefileName), fileContent, err => {
-                                            if (err) {
-                                                return vscode.window.showErrorMessage(`Oh No! We couldnt create ${fileName}`);
-                                            }            
-                                            vscode.window.showInformationMessage(`Sorted! Created ${fileName}`); 
-                                            overwritePrevented = true;
-                                        });
-                                    }
-                                }) 
-                            } while(overwritePrevented === true)
+                                let overwritefileName = newControllerName.toLowerCase() + '.dart';
+
+                                if(!fs.existsSync(path.join(fullPath, overwritefileName))) {
+                                    fs.writeFileSync(path.join(fullPath, overwritefileName), fileContent);
+                                    // Checks if the file was written
+                                    if(fs.existsSync(path.join(fullPath, overwritefileName))) {
+                                        overwriteIncomplete = false;
+                                        return vscode.window.showInformationMessage(`Sorted! Created ${overwritefileName}`);  
+                                    } else {
+                                        return vscode.window.showErrorMessage(`Whoops! We couldnt create ${overwritefileName}`);  
+                                    }    
+                                }
+                            }
                         }
                     }
                 });

@@ -1,4 +1,5 @@
 # Aqueduct Helper README
+
 This is the README for Aqueduct Helper. This extension helps speed up API development when using the Aqueduct framework.
 
 ### Useful Links
@@ -27,16 +28,16 @@ Find below all the possible snippets you can use while creating your APIs.
 - `aqu-controller`: Creates a basic resource controller.
 - `aqu-column`: Creates a column annotation.
 - `aqu-table`: Changes the name of the table definition.
-- `aqu-pk`: Creates a primary key.
+- `aqu-pk`: Creates a primary key annotation.
 - `aqu-transaction`: Creates the basic transaction.
 
 ##### Auth
-- `aqu-auth-token`: Creates a auth token route that grants and refreshes tokens.
+- `aqu-auth-token`: Creates an auth token route that grants and refreshes tokens.
 - `aqu-auth-bearer`: Creates a protected route with an OAuth 2.0 bearer token.
 - `aqu-auth-basic`: Creates a protected route with basic HTTP Authentication.
 
 ## Commands
-Find below all the possible commands you can use while creating your APIs. To use press <kbd>CTRL</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on Windows or <kbd>⌘ Command</kbd>+<kbd>⇧ Shift</kbd>+<kbd>P</kbd> on Mac
+Find below all the possible commands you can use while creating your APIs. To use press <kbd>CTRL</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on Windows or <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>P</kbd> on Mac
 
 - `aquModel`: Creates a customisable model file.
 - `aquCon`: Creates a customisable controller file.

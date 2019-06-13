@@ -38,9 +38,9 @@
     "Primary Key": {
         "prefix": "aqu-pk",
         "body": [
-            "@Column(primaryKey: true) int ${1:id}"
+            "@primaryKey int ${1:id}"
         ],
-        "description": "Creates a primary key."
+        "description": "Creates a primary key annotation."
     },
     "Transaction": {
         "prefix": "aqu-transaction",

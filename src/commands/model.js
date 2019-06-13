@@ -91,27 +91,25 @@ ${decleration.join("")}
                                 vscode.window.showInformationMessage(`Sorted! Created ${fileName}`);
                             }); 
                         } else {
-                            let overrideAvoided = false;
-                            do {
-                                console.log("Changing file name");
+                            let overwriteIncomplete = true;
+                            while(overwriteIncomplete) {
                                 let newModelName = await vscode.window.showInputBox({
                                     prompt: "New Model File Name (excluding .dart)"
                                 });
-    
-                                let overwritefileName = `${newModelName.toLowerCase()}.dart`
-    
-                                fs.access(path.join(fullPath, overwritefileName), fs.constants.F_OK, async function (err) {
-                                    if(err) {
-                                        fs.writeFile(path.join(fullPath, overwritefileName), fileContent, err => {
-                                            if (err) {
-                                                return vscode.window.showErrorMessage(`Oh No! We couldnt create ${overwritefileName}`);
-                                            }
-                                            vscode.window.showInformationMessage(`Sorted! Created ${overwritefileName}`); 
-                                            overrideAvoided = true;
-                                        });
-                                    }
-                                }) 
-                            } while(overrideAvoided === true)
+
+                                let overwritefileName = newModelName.toLowerCase() + '.dart'
+
+                                if(!fs.existsSync(path.join(fullPath, overwritefileName))) {
+                                    fs.writeFileSync(path.join(fullPath, overwritefileName), fileContent);
+                                    // Checks if the file was written
+                                    if(fs.existsSync(path.join(fullPath, overwritefileName))) {
+                                        overwriteIncomplete = false;
+                                        return vscode.window.showInformationMessage(`Sorted! Created ${overwritefileName}`);  
+                                    } else {
+                                        return vscode.window.showErrorMessage(`Whoops! Could not Create ${overwritefileName}`);  
+                                    }    
+                                }
+                            }
                         }
                     }
                 })
