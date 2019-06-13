@@ -36,6 +36,10 @@ Find below all the possible snippets you can use while creating your APIs.
 - `aqu-auth-bearer`: Creates a protected route with an OAuth 2.0 bearer token.
 - `aqu-auth-basic`: Creates a protected route with basic HTTP Authentication.
 
+##### Test
+- `aqu-http-test`: Creates a simple test that expects 200 OK.
+- `aqu-json-test`: Creates a simple test that expects the response to be a list of JSON objects which includes a ID which is a number.
+
 ## Commands
 Find below all the possible commands you can use while creating your APIs. To use press <kbd>CTRL</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on Windows or <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>P</kbd> on Mac
 

@@ -2,7 +2,7 @@
 	"name": "aqueduct-helper",
 	"displayName": "Aqueduct Helper",
 	"description": "A collection of snippets and commands to help speed up API development with the Aqueduct framework.",
-	"version": "0.0.2",
+	"version": "0.2.0",
 	"publisher": "AzMoza",
 	"icon": "images/aqu-icon.png",
 	"repository": {
@@ -55,6 +55,10 @@
             {
                 "language": "yaml",
                 "path": "./snippets/yaml.json"
+			},
+			{
+                "language": "dart",
+                "path": "./snippets/test.json"
             }
         ]
 	},
