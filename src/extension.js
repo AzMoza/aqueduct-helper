@@ -4,6 +4,8 @@ const vscode = require('vscode');
 
 const model = require('./commands/model.js')
 const controller = require('./commands/controller.js')
+const test = require('./commands/test.js')
+const DocsStatusBarItem = require('./DocsStatusBar');
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -12,7 +14,6 @@ const controller = require('./commands/controller.js')
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-
 	let disposableModelCommand = vscode.commands.registerCommand('extension.aquModel', async function () {
 		model.command()
 	});
@@ -21,8 +22,14 @@ function activate(context) {
 		controller.controller()
 	});
 
+	let disposableTestCommand = vscode.commands.registerCommand('extension.aquTest', async function () {
+		test.test();
+	});
+
 	context.subscriptions.push(disposableModelCommand);
 	context.subscriptions.push(disposableControllerCommand);
+	context.subscriptions.push(disposableTestCommand);
+	context.subscriptions.push(new DocsStatusBarItem());
 }
 exports.activate = activate;
 

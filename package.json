@@ -2,9 +2,8 @@
 	"name": "aqueduct-helper",
 	"displayName": "Aqueduct Helper",
 	"description": "A collection of snippets and commands to help speed up API development with the Aqueduct framework.",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"publisher": "AzMoza",
-	"icon": "images/aqu-icon.png",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/AzMoza/aqueduct-snippets.git"
@@ -19,7 +18,8 @@
 	"keywords": ["Dart", "API", "Aqueduct", "Flutter", "Snippets", "REST"],
 	"activationEvents": [
 		"onCommand:extension.aquModel",
-		"onCommand:extension.aquCon"
+		"onCommand:extension.aquCon",
+		"onCommand:extension.aquTest"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
@@ -32,6 +32,11 @@
 			{
 				"command": "extension.aquCon",
 				"title": "Create a Aqueduct Resource Controller",
+				"when": "editorLangId == dart"
+			},
+			{
+				"command": "extension.aquTest",
+				"title": "Create a Aqueduct Test",
 				"when": "editorLangId == dart"
 			}
 		],

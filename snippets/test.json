@@ -21,6 +21,6 @@
             "   );",
             "});"
         ],
-        "description": "Creates a simple test that expects the response to be a list of JSON objects which includes a ID which is a number"
+        "description": "Creates a simple test that expects the response to be a list of JSON objects which includes a ID which is a number."
     }
 }
