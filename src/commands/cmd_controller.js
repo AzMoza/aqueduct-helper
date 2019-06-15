@@ -10,11 +10,13 @@ module.exports = {
 		}
 
 		const CONTROLLER_FILE_NAME = await vscode.window.showInputBox({
-			prompt: "Controller File Name (excluding .dart)"
+            prompt: "Controller File Name (excluding .dart)",
+            placeHolder: "user_controller"
 		});
 
 		const CONTROLLER_NAME = await vscode.window.showInputBox({
-			prompt: "Controller Name"
+            prompt: "Name of your controller",
+            placeHolder: "UserController"
 		});
 
 		if (!CONTROLLER_NAME) return;

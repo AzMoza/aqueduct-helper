@@ -10,7 +10,8 @@ module.exports = {
         }
 
         let testFileName = await vscode.window.showInputBox({
-			prompt: "Enter the name of your test file (excluding .dart)"
+            prompt: "Enter the name of your test file (excluding .dart)",
+            placeHolder: "user_test"
         });
 
         const FILE_CONTENT = `

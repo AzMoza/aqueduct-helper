@@ -11,6 +11,7 @@ All notable changes to the Aqueduct Helper will be documented in this file. If y
     - Press the "Aqueduct Docs" button located on the status bar (bottom right) to be taken immediately to the Aqueduct documentation.
 #### Changed
 - Changed `aquCon` to `aquController`.
+- Commands are now grouped together. You can see all available commands by typing 'Aqueduct' in the command palette.
 #### Fixed
 - General bug fixes.
 

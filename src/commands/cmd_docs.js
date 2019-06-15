@@ -21,36 +21,41 @@ module.exports = {
             "Deployment",
             "OpenAPI Documentation",
             "Command Line Tools"
-        ]);
+        ], 
+        {
+            ignoreFocusOut: true,
+            matchOnDescription: true,
+            placeHolder: "HTTP"
+        });
 
         try {
             switch (TOPIC) {
                 case "Application Configuration":
-                    await open(`${BASE_URL}/application/`);
+                    vscode.env.openExternal(`${BASE_URL}/application/`);
                     break;
                 case "HTTP":
-                        await open(`${BASE_URL}/http/`);
-                        break;
+                    vscode.env.openExternal(`${BASE_URL}/http/`);
+                    break;
                 case "Databases and ORM":
-                        await open(`${BASE_URL}/db/`);
-                        break;
+                    vscode.env.openExternal(`${BASE_URL}/db/`);
+                    break;
                 case "Authorization and OAuth 2.0":
-                        await open(`${BASE_URL}/auth/`);
-                        break;
+                    vscode.env.openExternal(`${BASE_URL}/auth/`);
+                    break;
                 case "Development and Testing":
-                        await open(`${BASE_URL}/testing/`);
-                        break;
+                    vscode.env.openExternal(`${BASE_URL}/testing/`);
+                    break;
                 case "Deployment":
-                        await open(`${BASE_URL}/deploy/`);
-                        break;
+                    vscode.env.openExternal(`${BASE_URL}/deploy/`);
+                    break;
                 case "OpenAPI Documentation":
-                        await open(`${BASE_URL}/openapi/`);
-                        break;
+                    vscode.env.openExternal(`${BASE_URL}/openapi/`);
+                    break;
                 case "Command Line Tools":
-                        await open(`${BASE_URL}/cli/`);
-                        break; 
+                    vscode.env.openExternal(`${BASE_URL}/cli/`);
+                    break; 
                 default:
-                    await open(`${BASE_URL}/`);
+                    vscode.env.openExternal(`${BASE_URL}/`);
                     break;
             }
         } catch (error) {

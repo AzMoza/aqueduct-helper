@@ -15,7 +15,20 @@ const DocsStatusBarItem = require('./components/DocsStatusBar.js');
 /**
  * @param {vscode.ExtensionContext} context
  */
-function activate(context) {
+async function activate(context) {
+
+	let previousVersion = context.globalState.get("aquPreviousVersion");
+	let currentVersion = vscode.extensions.getExtension('azmoza.aqueduct-helper').packageJSON.version;
+
+	console.log(currentVersion);
+
+	if(previousVersion !== currentVersion) {
+		let value = await vscode.window.showInformationMessage("Aqueduct Helper has been updated 🎉🎉🎉 Check the release notes.", "Show Me!", "No Thanks!");
+		if(value === "Show Me!") {
+			vscode.env.openExternal("https://marketplace.visualstudio.com/items/AzMoza.aqueduct-helper/changelog")
+		}
+		context.globalState.update("aquPreviousVersion", currentVersion);
+	}
 	
 	let disposableModelCommand = vscode.commands.registerCommand('extension.aquModel', () => model.command());
 	let disposableControllerCommand = vscode.commands.registerCommand('extension.aquController', () => controller.controller());

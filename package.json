@@ -33,7 +33,6 @@
 		"onCommand:extension.aquModel",
 		"onCommand:extension.aquController",
 		"onCommand:extension.aquTest",
-		"onCommand:extension.aquStatusDocs",
 		"onCommand:extension.aquDocs"
 	],
 	"main": "./src/extension.js",
@@ -42,22 +41,22 @@
 			{
 				"command": "extension.aquModel",
 				"title": "Create a Aqueduct Model",
-				"when": "editorLangId == dart"
+				"category": "Aqueduct"
 			},
 			{
 				"command": "extension.aquController",
 				"title": "Create a Aqueduct Resource Controller",
-				"when": "editorLangId == dart"
+				"category": "Aqueduct"
 			},
 			{
 				"command": "extension.aquTest",
 				"title": "Create a Aqueduct Test",
-				"when": "editorLangId == dart"
+				"category": "Aqueduct"
 			},
 			{
 				"command": "extension.aquDocs",
 				"title": "Open the Aqueduct Documentation",
-				"when": "editorLangId == dart"
+				"category": "Aqueduct"
 			}
 		],
 		"snippets": [
