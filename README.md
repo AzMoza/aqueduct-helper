@@ -47,6 +47,7 @@ Find below all the possible commands you can use while creating your APIs. To us
 - `aquCon`: Creates a customisable controller file.
     - You will have the option to include a get, post, put and delete request.
 - `aquTest`: Creates a basic test file.
+- `aquDocs`: Allows you to search the docs from your VS Code.
 
 ## Release Notes
 All notable changes to Aqueduct Helper will be documented [here](https://marketplace.visualstudio.com/items/AzMoza.aqueduct-helper/changelog).

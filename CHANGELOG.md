@@ -5,11 +5,12 @@ All notable changes to the Aqueduct Helper will be documented in this file. If y
 #### Added
 - Test Command 
     - `aquTest`: Creates a basic test file with a simple test that expects a 200 OK response when calling a specific API endpoint.
-#### Changed
-- The primary key snippet now creates `@primaryKey` instead of `@Column(primaryKey: true)`
+- Aqueduct Documentation Command 
+    - `aquDocs`: Allows you to search the docs within VS Code. (Pages will open in your default web browser)
+- Aqueduct Documentation Status Bar
+    - Press the "Aqueduct Docs" button located on the status bar (bottom right) to be taken immediately to the Aqueduct documentation.
 #### Fixed
-- Overwriting a file would only allow one attempt
-- Formatting when generating the model and resource controller files
+- General bug fixes.
 
 ## [0.2.1] - 2019-06-13
 #### Added

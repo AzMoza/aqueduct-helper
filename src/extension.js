@@ -2,10 +2,11 @@
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
 
-const model = require('./commands/model.js')
-const controller = require('./commands/controller.js')
-const test = require('./commands/test.js')
-const DocsStatusBarItem = require('./DocsStatusBar');
+const model = require('./commands/cmd_model.js')
+const controller = require('./commands/cmd_controller.js')
+const test = require('./commands/cmd_test.js')
+const docs = require('./commands/cmd_docs.js')
+const DocsStatusBarItem = require('./DocsStatusBar.js');
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -26,9 +27,19 @@ function activate(context) {
 		test.test();
 	});
 
+	let disposableStatusDocsCommand = vscode.commands.registerCommand('extension.aquStatusDocs', async function () {
+		docs.statusOpenDocs();
+	});
+
+	let disposableDocsCommand = vscode.commands.registerCommand('extension.aquDocs', async function () {
+		docs.commandOpenDocs();
+	});
+
 	context.subscriptions.push(disposableModelCommand);
 	context.subscriptions.push(disposableControllerCommand);
 	context.subscriptions.push(disposableTestCommand);
+	context.subscriptions.push(disposableStatusDocsCommand);
+	context.subscriptions.push(disposableDocsCommand);
 	context.subscriptions.push(new DocsStatusBarItem());
 }
 exports.activate = activate;

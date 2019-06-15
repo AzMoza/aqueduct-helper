@@ -14,12 +14,27 @@
 	"engines": {
 		"vscode": "^1.35.0"
 	},
-	"categories": ["Other", "Snippets"],
-	"keywords": ["Dart", "API", "Aqueduct", "Flutter", "Snippets", "REST"],
+	"categories": [
+		"Other",
+		"Snippets"
+	],
+	"keywords": [
+		"Dart",
+		"API",
+		"Aqueduct",
+		"Flutter",
+		"REST",
+		"Web",
+		"Database",
+		"Postgres"
+	],
 	"activationEvents": [
+		"*",
 		"onCommand:extension.aquModel",
 		"onCommand:extension.aquCon",
-		"onCommand:extension.aquTest"
+		"onCommand:extension.aquTest",
+		"onCommand:extension.aquStatusDocs",
+		"onCommand:extension.aquDocs"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
@@ -38,44 +53,50 @@
 				"command": "extension.aquTest",
 				"title": "Create a Aqueduct Test",
 				"when": "editorLangId == dart"
+			},
+			{
+				"command": "extension.aquDocs",
+				"title": "Open the Aqueduct Documentation",
+				"when": "editorLangId == dart"
 			}
 		],
 		"snippets": [
-            {
-                "language": "dart",
-                "path": "./snippets/config.json"
-            },
-            {
-                "language": "dart",
-                "path": "./snippets/http.json"
-            },
-            {
-                "language": "dart",
-                "path": "./snippets/orm.json"
-            },
-            {
-                "language": "dart",
-                "path": "./snippets/auth.json"
-            },
-            {
-                "language": "yaml",
-                "path": "./snippets/yaml.json"
+			{
+				"language": "dart",
+				"path": "./snippets/config.json"
 			},
 			{
-                "language": "dart",
-                "path": "./snippets/test.json"
-            }
-        ]
+				"language": "dart",
+				"path": "./snippets/http.json"
+			},
+			{
+				"language": "dart",
+				"path": "./snippets/orm.json"
+			},
+			{
+				"language": "dart",
+				"path": "./snippets/auth.json"
+			},
+			{
+				"language": "yaml",
+				"path": "./snippets/yaml.json"
+			},
+			{
+				"language": "dart",
+				"path": "./snippets/test.json"
+			}
+		]
 	},
 	"scripts": {
 		"postinstall": "node ./node_modules/vscode/bin/install",
 		"test": "node ./node_modules/vscode/bin/test"
 	},
 	"devDependencies": {
-		"typescript": "^3.3.1",
-		"vscode": "^1.1.28",
-		"eslint": "^5.13.0",
+		"@types/mocha": "^2.2.42",
 		"@types/node": "^10.12.21",
-		"@types/mocha": "^2.2.42"
+		"eslint": "^5.13.0",
+		"open": "^6.3.0",
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28"
 	}
 }
