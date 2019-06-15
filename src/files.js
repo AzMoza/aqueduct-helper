@@ -33,11 +33,11 @@ module.exports = {
                             return vscode.window.showInformationMessage(`Sorted! Created ${fileName}`);
                         }); 
                     } else {
-                        const override = await vscode.window.showInputBox({
+                        const OVERRIDE = await vscode.window.showInputBox({
                             prompt: "A file already exists with the choosen name. Would you like to override it? y/n"
                         });
     
-                        if(override.toLowerCase() === "y") {
+                        if(OVERRIDE.toLowerCase() === "y") {
                             console.log("Overwritting file");
                             fs.writeFile(path.join(fullPath, fileName), fileContent, err => {
                                 if (err) {

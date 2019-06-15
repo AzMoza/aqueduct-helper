@@ -1,6 +1,4 @@
-const vscode = require('vscode');
-const url = require('url');
-
+const vscode = require('vscode')
 const open = require('open');
 
 module.exports = {
@@ -14,7 +12,7 @@ module.exports = {
     },
     commandOpenDocs: async function() {
         const BASE_URL = "https://aqueduct.io/docs";
-        const topic = await vscode.window.showQuickPick([
+        const TOPIC = await vscode.window.showQuickPick([
             "Application Configuration",
             "HTTP",
             "Databases and ORM",
@@ -26,7 +24,7 @@ module.exports = {
         ]);
 
         try {
-            switch (topic) {
+            switch (TOPIC) {
                 case "Application Configuration":
                     await open(`${BASE_URL}/application/`);
                     break;
@@ -52,7 +50,7 @@ module.exports = {
                         await open(`${BASE_URL}/cli/`);
                         break; 
                 default:
-                    await open(`${BASE_URL}/`)
+                    await open(`${BASE_URL}/`);
                     break;
             }
         } catch (error) {

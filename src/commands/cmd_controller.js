@@ -9,15 +9,15 @@ module.exports = {
 			return vscode.window.showErrorMessage("Please open a directory before running this command");
 		}
 
-		const controllerFileName = await vscode.window.showInputBox({
+		const CONTROLLER_FILE_NAME = await vscode.window.showInputBox({
 			prompt: "Controller File Name (excluding .dart)"
 		});
 
-		const controllerName = await vscode.window.showInputBox({
+		const CONTROLLER_NAME = await vscode.window.showInputBox({
 			prompt: "Controller Name"
 		});
 
-		if (!controllerName) return;
+		if (!CONTROLLER_NAME) return;
 
 		let boilerplate = await vscode.window.showInputBox({
 			prompt: "Would you like use to create basic HTTP get, post, put and delete requests? y/n"
@@ -30,7 +30,7 @@ module.exports = {
 // TODO: Update this import with your application name to import all required aqueduct imports.
 import '../application_name.dart';
 
-class ${controllerName} extends ResourceController {
+class ${CONTROLLER_NAME} extends ResourceController {
     @Operation.get()
     Future<Response> get() async {
         //TODO: Implement get method
@@ -56,17 +56,17 @@ class ${controllerName} extends ResourceController {
 // TODO: Update this import with your application name to import all required aqueduct imports.
 import '../application_name.dart';
 
-class ${controllerName} extends ResourceController {
+class ${CONTROLLER_NAME} extends ResourceController {
 
 }`
         }
         
-		const controllerFile = "/lib/controllers";
+		const CONTROLLER_FILE = "/lib/controllers";
 
-        const fullPath = path.join(vscode.workspace.rootPath, controllerFile);
-        const fileName = controllerFileName.toLowerCase() + ".dart";
+        const FULL_PATH = path.join(vscode.workspace.rootPath, CONTROLLER_FILE);
+        const FILE_NAME = CONTROLLER_FILE_NAME.toLowerCase() + ".dart";
         
-        await writer.writer(fullPath, fileName, fileContent);
+        await writer.writer(FULL_PATH, FILE_NAME, fileContent);
 
     }
 }

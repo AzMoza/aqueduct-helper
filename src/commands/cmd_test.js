@@ -13,7 +13,7 @@ module.exports = {
 			prompt: "Enter the name of your test file (excluding .dart)"
         });
 
-        const fileContent = `
+        const FILE_CONTENT = `
 import 'harness/app.dart';
 
 Future main() async {
@@ -25,11 +25,11 @@ Future main() async {
   });
 }
         `
-        const testFilePath = "/test";
+        const TEST_FILE_PATH = "/test";
 
-        const fullPath = path.join(vscode.workspace.rootPath, testFilePath);
-        const fileName = testFileName.toLowerCase() + ".dart";
+        const FULL_PATH = path.join(vscode.workspace.rootPath, TEST_FILE_PATH);
+        const FILE_NAME = testFileName.toLowerCase() + ".dart";
         
-        await writer.writer(fullPath, fileName, fileContent);
+        await writer.writer(FULL_PATH, FILE_NAME, FILE_CONTENT);
     }
 }
