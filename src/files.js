@@ -15,7 +15,6 @@ module.exports = {
                                 if (err) {
                                     return vscode.window.showErrorMessage(`Oh No! We couldnt create ${fileName}`);
                                 }
-                                console.log(path.join(fullPath, fileName))
                                 vscode.window.showInformationMessage(`Sorted! Created ${fileName}`);
                             });
                         }
@@ -38,7 +37,6 @@ module.exports = {
                         });
     
                         if(OVERRIDE.toLowerCase() === "y") {
-                            console.log("Overwritting file");
                             fs.writeFile(path.join(fullPath, fileName), fileContent, err => {
                                 if (err) {
                                     return vscode.window.showErrorMessage(`Oh No! We couldnt create ${fileName}`);

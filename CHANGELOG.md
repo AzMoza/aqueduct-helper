@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to the Aqueduct Helper will be documented in this file. If you wish to request a feature please do so [here](https://github.com/AzMoza/aqueduct-snippets/issues/new).
 
-## [0.3.0] - 2019-06-13
+## [0.3.0] - 2019-06-15
 #### Added
 - Test Command 
     - `aquTest`: Creates a basic test file with a simple test that expects a 200 OK response when calling a specific API endpoint.

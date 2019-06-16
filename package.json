@@ -2,7 +2,7 @@
 	"name": "aqueduct-helper",
 	"displayName": "Aqueduct Helper",
 	"description": "A collection of snippets and commands to help speed up API development with the Aqueduct framework.",
-	"version": "0.2.1",
+	"version": "0.3.0",
 	"publisher": "AzMoza",
 	"repository": {
 		"type": "git",

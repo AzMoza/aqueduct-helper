@@ -20,10 +20,8 @@ async function activate(context) {
 	let previousVersion = context.globalState.get("aquPreviousVersion");
 	let currentVersion = vscode.extensions.getExtension('azmoza.aqueduct-helper').packageJSON.version;
 
-	console.log(currentVersion);
-
 	if(previousVersion !== currentVersion) {
-		let value = await vscode.window.showInformationMessage("Aqueduct Helper has been updated 🎉🎉🎉 Check the release notes.", "Show Me!", "No Thanks!");
+		let value = await vscode.window.showInformationMessage("Aqueduct Helper has been updated! Check the release notes for more details.", "Show Me", "No Thanks");
 		if(value === "Show Me!") {
 			vscode.env.openExternal("https://marketplace.visualstudio.com/items/AzMoza.aqueduct-helper/changelog")
 		}

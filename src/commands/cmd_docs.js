@@ -1,11 +1,10 @@
 const vscode = require('vscode')
-const open = require('open');
 
 module.exports = {
     statusOpenDocs: async function() {
         //* Opens the Aqueduct documentation when the status bar item is pressed
         try {
-            await open("https://aqueduct.io/docs/");
+            await vscode.env.openExternal("https://aqueduct.io/docs/");
         } catch (error) {
             vscode.window.showErrorMessage("Oh No! The Aqueduct documentation count not be open.")
         }   
@@ -25,7 +24,7 @@ module.exports = {
         {
             ignoreFocusOut: true,
             matchOnDescription: true,
-            placeHolder: "HTTP"
+            placeHolder: "Choose a topic to search"
         });
 
         try {
@@ -55,7 +54,7 @@ module.exports = {
                     vscode.env.openExternal(`${BASE_URL}/cli/`);
                     break; 
                 default:
-                    vscode.env.openExternal(`${BASE_URL}/`);
+                    vscode.window.showErrorMessage("Unable to open documentation");
                     break;
             }
         } catch (error) {
