@@ -12,6 +12,7 @@ module.exports = {
     commandOpenDocs: async function() {
         const BASE_URL = "https://aqueduct.io/docs";
         const TOPIC = await vscode.window.showQuickPick([
+            "Tutorial",
             "Application Configuration",
             "HTTP",
             "Databases and ORM",
@@ -29,6 +30,9 @@ module.exports = {
 
         try {
             switch (TOPIC) {
+                case "Tutorial":
+                    vscode.env.openExternal(`${BASE_URL}/tut/getting-started/`);
+                    break;
                 case "Application Configuration":
                     vscode.env.openExternal(`${BASE_URL}/application/`);
                     break;

@@ -4,6 +4,7 @@ const vscode = require('vscode');
 
 const model = require('./commands/cmd_model.js')
 const controller = require('./commands/cmd_controller.js')
+const create = require('./commands/cmd_create.js')
 const test = require('./commands/cmd_test.js')
 const docs = require('./commands/cmd_docs.js')
 
@@ -30,12 +31,14 @@ async function activate(context) {
 	
 	let disposableModelCommand = vscode.commands.registerCommand('extension.aquModel', () => model.command());
 	let disposableControllerCommand = vscode.commands.registerCommand('extension.aquController', () => controller.controller());
+	let disposableCreatorCommand = vscode.commands.registerCommand('extension.aquCreate', () => create.create());
 	let disposableTestCommand = vscode.commands.registerCommand('extension.aquTest', () => test.test());
 	let disposableStatusDocsCommand = vscode.commands.registerCommand('extension.aquStatusDocs', () => docs.statusOpenDocs());
 	let disposableDocsCommand = vscode.commands.registerCommand('extension.aquDocs', () => docs.commandOpenDocs());
 
 	context.subscriptions.push(disposableModelCommand);
 	context.subscriptions.push(disposableControllerCommand);
+	context.subscriptions.push(disposableCreatorCommand);
 	context.subscriptions.push(disposableTestCommand);
 	context.subscriptions.push(disposableStatusDocsCommand);
 	context.subscriptions.push(disposableDocsCommand);

@@ -4,6 +4,11 @@
 	"description": "A collection of snippets and commands to help speed up API development with the Aqueduct framework.",
 	"version": "0.3.0",
 	"publisher": "AzMoza",
+	"icon": "images/aqu-icon.png",
+	"galleryBanner": {
+		"color": "#26aae1",
+		"theme": "dark"
+	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/AzMoza/aqueduct-snippets.git"
@@ -32,6 +37,7 @@
 		"*",
 		"onCommand:extension.aquModel",
 		"onCommand:extension.aquController",
+		"onCommand:extension.aquCreate",
 		"onCommand:extension.aquTest",
 		"onCommand:extension.aquDocs"
 	],
@@ -46,6 +52,11 @@
 			{
 				"command": "extension.aquController",
 				"title": "Create a Aqueduct Resource Controller",
+				"category": "Aqueduct"
+			},
+			{
+				"command": "extension.aquCreate",
+				"title": "Create a Aqueduct Project",
 				"category": "Aqueduct"
 			},
 			{
@@ -96,5 +107,8 @@
 		"eslint": "^5.13.0",
 		"typescript": "^3.3.1",
 		"vscode": "^1.1.28"
+	},
+	"dependencies": {
+		"file-uri-to-path": "^1.0.0"
 	}
 }
