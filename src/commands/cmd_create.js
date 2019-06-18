@@ -1,6 +1,6 @@
 const vscode = require('vscode');
 const path = require('path');
-const uri = require('file-uri-to-path')
+const uri = require('file-uri-to-path');
 const exec = require('child_process');
 
 module.exports = {
@@ -15,9 +15,7 @@ module.exports = {
             canSelectMany: false,
         });
 
-        let selectedPath = uri(locationUri.toString());
-        console.log(selectedPath);
-
+        let path = locationUri[0].fsPath;
 
         let template = await vscode.window.showQuickPick([
             "Default",
@@ -30,37 +28,28 @@ module.exports = {
             placeHolder: "Choose a template for your Aqueduct API"
         });
 
-        switch (template) {
-            case "default":
-                exec.exec(`cd ${selectedPath} && aqueduct create -t default ${name}`, (err, stdout, stderr) => {
-                    if(err) {
-                        return vscode.window.showErrorMessage("Error while creating project")
-                    }
-        
-                    console.log('stdout: ' + stdout);
-                    console.log('stderr: ' + stderr);
-        
-                    vscode.window.showInformationMessage("Aqueduct files created successfully");
-                    vscode.commands.executeCommand("vscode.openFolder", locationUri, true);
-                });
-                break;
-            case "DB":
-                exec.exec(`cd ${selectedPath} && aqueduct create -t db ${name}`, (err, stdout, stderr) => {
-                    if(err) {
-                        return vscode.window.showErrorMessage("Error while creating project")
-                    }
-        
-                    console.log('stdout: ' + stdout);
-                    console.log('stderr: ' + stderr);
+        if(process.platform === "windows") {
+            let type;
 
-                    let folderUrl = vscode.Uri.file(path.join(locationUri, name));
-        
-                    vscode.window.showInformationMessage("Aqueduct files created successfully");
-                    vscode.commands.executeCommand("vscode.openFolder", folderUrl, true);
-                });
-                break;
-            case "DB and Auth":
-                exec.exec(`cd ${selectedPath} && aqueduct create -t db_and_auth ${name}`, (err, stdout, stderr) => {
+            switch(template) {
+                case "Default":
+                    type = "default";
+                    break; 
+                case "DB":
+                    type = "db";
+                    break; 
+                case "DB and Auth":
+                    type = "db_and_auth";
+                    break; 
+                default: 
+                    type = "default";
+                    break;
+            }
+
+            let drive = path.substring(0);
+            if(drive !== "c") {
+                vscode.window.showInformationMessage("We'll take it from here! Creating Aqueduct files");
+                exec.exec(`cd ${drive} && cd ${path} aqueduct create -t ${type} ${name}`, (err, stdout, stderr) => {
                     if(err) {
                         return vscode.window.showErrorMessage("Error while creating project")
                     }
@@ -68,13 +57,29 @@ module.exports = {
                     console.log('stdout: ' + stdout);
                     console.log('stderr: ' + stderr);
         
-                    vscode.window.showInformationMessage("Aqueduct files created successfully");
-                    vscode.commands.executeCommand("vscode.openFolder", locationUri, true);
+                    vscode.window.showInformationMessage("Finished! Aqueduct files created successfully");
                 });
-                break;
-            default:
-                vscode.window.showErrorMessage("Unable to create template files");
-                break;
+            } else {
+                vscode.window.showInformationMessage("We'll take it from here! Creating Aqueduct files");
+                exec.exec(`cd ${path} aqueduct create -t ${type} ${name}`, (err, stdout, stderr) => {
+                    if(err) {
+                        return vscode.window.showErrorMessage("Error while creating project")
+                    }
+        
+                    console.log('stdout: ' + stdout);
+                    console.log('stderr: ' + stderr);
+        
+                    vscode.window.showInformationMessage("Finished! Aqueduct files created successfully");
+                });
+            }
+
+        } else if("darwin") {
+
+        } else {
+            let error = await vscode.window.showErrorMessage("Your current OS does not support this feature. Please file a GitHib issue.", "Open Github", "Close");
+            if(error === "Open Github") {
+                vscode.env.openExternal("https://github.com/AzMoza/aqueduct-helper/issues/new")
+            }
         }
     }
 }
