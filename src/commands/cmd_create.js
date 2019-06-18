@@ -28,7 +28,7 @@ module.exports = {
             placeHolder: "Choose a template for your Aqueduct API"
         });
 
-        if(process.platform === "windows") {
+        if(process.platform === "win32") {
             let type;
 
             switch(template) {
@@ -46,11 +46,12 @@ module.exports = {
                     break;
             }
 
-            let drive = path.substring(0) + ":";
+            let drive = `${path[0]}:`;
             if(drive !== "c:") {
                 vscode.window.showInformationMessage("We'll take it from here! Creating Aqueduct files");
                 exec.exec(`${drive} && cd ${path} && aqueduct create -t ${type} ${name}`, (err, stdout, stderr) => {
                     if(err) {
+                        console.log(err);
                         return vscode.window.showErrorMessage("Error while creating project")
                     }
         
@@ -61,8 +62,9 @@ module.exports = {
                 });
             } else {
                 vscode.window.showInformationMessage("We'll take it from here! Creating Aqueduct files");
-                exec.exec(`cd ${path} aqueduct create -t ${type} ${name}`, (err, stdout, stderr) => {
+                exec.exec(`cd ${path} && aqueduct create -t ${type} ${name}`, (err, stdout, stderr) => {
                     if(err) {
+                        console.log(err);
                         return vscode.window.showErrorMessage("Error while creating project")
                     }
         
@@ -72,9 +74,8 @@ module.exports = {
                     vscode.window.showInformationMessage("Finished! Aqueduct files created successfully");
                 });
             }
-
-        } else if("darwin") {
-
+        } else if(process.platform === "darwin") {
+            
         } else {
             let error = await vscode.window.showErrorMessage("Your current OS does not support this feature. Please file a GitHib issue.", "Open Github", "Close");
             if(error === "Open Github") {
