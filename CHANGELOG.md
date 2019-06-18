@@ -1,9 +1,19 @@
 # Change Log
 All notable changes to the Aqueduct Helper will be documented in this file. If you wish to request a feature please do so [here](https://github.com/AzMoza/aqueduct-snippets/issues/new).
 
+## [0.3.1] - 2019-06-18
+#### Added
+- Create Aqueduct Projects Command
+    - `aquCreate`: Creates either a default, DB or DB with auth project straight from VS Code.
+- Can now access the tutorial from the documentation quick pick.
+#### Change
+- Aqueduct will be installed when the plugin is activated if it is not already installed (with permission of the user).
+#### Fixed
+- When requested the change notes would not be shown.
+
 ## [0.3.0] - 2019-06-15
 #### Added
-- Test Command 
+- Test Command
     - `aquTest`: Creates a basic test file with a simple test that expects a 200 OK response when calling a specific API endpoint.
 - Aqueduct Documentation Command.
     - `aquDocs`: Allows you to search the docs within VS Code (Pages will open in your default web browser).
@@ -23,13 +33,13 @@ All notable changes to the Aqueduct Helper will be documented in this file. If y
 #### Changed
 - The primary key snippet now creates `@primaryKey` instead of `@Column(primaryKey: true)`
 #### Fixed
-- Overwriting a file would only allow one attempt
-- Formatting when generating the model and resource controller files
+- Overwriting a file would only allow one attempt.
+- Formatting when generating the model and resource controller files.
 
 ## [0.1.1] - 2019-06-12
 #### Fixed
-- Mac OS files being created in the wrong directory
+- Mac OS files being created in the wrong directory.
 
 ## [0.1.0] - 2019-06-12
 #### Added
-- Initial release
+- Initial release.

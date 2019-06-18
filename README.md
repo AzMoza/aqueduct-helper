@@ -43,6 +43,7 @@ Find below all the possible snippets you can use while creating your APIs.
 ## Commands
 Find below all the possible commands you can use while creating your APIs. To use press <kbd>CTRL</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on Windows or <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>P</kbd> on Mac
 
+- `aquCreate`: Creates either a default, basic DB or a DB and Auth Aqueduct project.
 - `aquModel`: Creates a customisable model file.
 - `aquController`: Creates a customisable controller file.
     - You will have the option to include a get, post, put and delete request.

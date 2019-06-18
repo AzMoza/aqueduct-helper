@@ -8,6 +8,8 @@ module.exports = {
             prompt: "Enter the name of your project"
         })
 
+        if(name === "") return;
+
         let locationUri = await vscode.window.showOpenDialog({
             canSelectFolders: true,
             canSelectFiles: false,
@@ -16,7 +18,7 @@ module.exports = {
 
         let path = locationUri[0].fsPath;
 
-        let template = await vscode.window.showQuickPick(["Default","DB","DB with Authentication"],
+        let template = await vscode.window.showQuickPick(["Default","Database","Database with Authentication"],
         {
             canPickMany: false,
             ignoreFocusOut: true,
@@ -28,10 +30,10 @@ module.exports = {
             case "Default":
                 type = "default";
                 break;
-            case "DB":
+            case "Database":
                 type = "db";
                 break;
-            case "DB with Authentication":
+            case "Database with Authentication":
                 type = "db_and_auth";
                 break;
             default:
@@ -42,7 +44,7 @@ module.exports = {
         if (process.platform === "win32") {
             let drive = `${path[0]}:`;
             if (drive !== "c:") {
-                vscode.window.showInformationMessage("We'll take it from here! Creating Aqueduct files");
+                vscode.window.showInformationMessage("We'll take it from here! Creating Aqueduct files. This may take take a few minutes.");
                 exec.exec(`${drive} && cd ${path} && aqueduct create -t ${type} ${name}`, (err, stdout, stderr) => {
                     if (err) {
                         console.log(err);
@@ -58,7 +60,7 @@ module.exports = {
                     vscode.commands.executeCommand("vscode.openFolder", folderUrl, false)
                 });
             } else {
-                vscode.window.showInformationMessage("We'll take it from here! Creating Aqueduct files");
+                vscode.window.showInformationMessage("We'll take it from here! Creating Aqueduct files. This may take take a few minutes.");
                 exec.exec(`cd ${path} && aqueduct create -t ${type} ${name}`, (err, stdout, stderr) => {
                     if (err) {
                         console.log(err);
@@ -75,7 +77,7 @@ module.exports = {
                 });
             }
         } else if (process.platform === "darwin" || process.platform === "linux") {
-            vscode.window.showInformationMessage("We'll take it from here! Creating Aqueduct files");
+            vscode.window.showInformationMessage("We'll take it from here! Creating Aqueduct files. This may take take a few minutes.");
             exec.exec(`cd ${path} && aqueduct create -t ${type} ${name}`, (err, stdout, stderr) => {
                 if (err) {
                     console.log(err);

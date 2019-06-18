@@ -1,6 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
+const cmd = require('child_process');
 
 const model = require('./commands/cmd_model.js')
 const controller = require('./commands/cmd_controller.js')
@@ -23,11 +24,31 @@ async function activate(context) {
 
 	if(previousVersion !== currentVersion) {
 		let value = await vscode.window.showInformationMessage("Aqueduct Helper has been updated! Check the release notes for more details.", "Show Me", "No Thanks");
-		if(value === "Show Me!") {
+		if(value === "Show Me") {
 			vscode.env.openExternal("https://marketplace.visualstudio.com/items/AzMoza.aqueduct-helper/changelog")
 		}
 		context.globalState.update("aquPreviousVersion", currentVersion);
 	}
+
+	cmd.exec("aqueduct --version", async (err, stdout) => {
+		if(err) {
+			let error = await vscode.window.showInformationMessage("Aqueduct is not installed. Woould you like to install it now?", "Yes Please", "No");
+			if(error === "Yes Please") {
+				cmd.exec("pub global install aqueduct", async (err) => {
+					if(err) {
+						vscode.window.showErrorMessage("Aqueduct could not be installed");
+					} else {
+						let tutorial = await vscode.window.showInformationMessage("Aqueduct is installed.", "View Tutorial", "No Thanks");
+						if(tutorial === "View Tutorial") {
+							vscode.env.openExternal("https://aqueduct.io/docs/tut/getting-started/");
+						}
+					}
+				})
+			}
+		} else {
+			vscode.window.showInformationMessage(`Aqueduct is active at v${stdout.substring(22, stdout.length)}`)
+		}
+	})
 	
 	let disposableModelCommand = vscode.commands.registerCommand('extension.aquModel', () => model.command());
 	let disposableControllerCommand = vscode.commands.registerCommand('extension.aquController', () => controller.controller());
