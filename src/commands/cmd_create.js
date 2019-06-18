@@ -46,10 +46,10 @@ module.exports = {
                     break;
             }
 
-            let drive = path.substring(0);
-            if(drive !== "c") {
+            let drive = path.substring(0) + ":";
+            if(drive !== "c:") {
                 vscode.window.showInformationMessage("We'll take it from here! Creating Aqueduct files");
-                exec.exec(`cd ${drive} && cd ${path} aqueduct create -t ${type} ${name}`, (err, stdout, stderr) => {
+                exec.exec(`${drive} && cd ${path} && aqueduct create -t ${type} ${name}`, (err, stdout, stderr) => {
                     if(err) {
                         return vscode.window.showErrorMessage("Error while creating project")
                     }
