@@ -44,7 +44,7 @@ module.exports = {
         if (process.platform === "win32") {
             let drive = `${path[0]}:`;
             if (drive !== "c:") {
-                vscode.window.showInformationMessage("We'll take it from here! Creating Aqueduct files. This may take take a few minutes.");
+                vscode.window.showInformationMessage("We'll take it from here! Creating Aqueduct files. This may take a few minutes.");
                 exec.exec(`${drive} && cd ${path} && aqueduct create -t ${type} ${name}`, (err, stdout, stderr) => {
                     if (err) {
                         console.log(err);
@@ -93,8 +93,8 @@ module.exports = {
                 vscode.commands.executeCommand("vscode.openFolder", folderUrl, false)
             });
         } else {
-            let error = await vscode.window.showErrorMessage("Your current OS does not support this feature. Please file a GitHib issue.", "Open Github", "Close");
-            if (error === "Open Github") {
+            let error = await vscode.window.showErrorMessage("Your current OS does not support this feature. Please file a GitHub issue.", "Open GitHub", "Close");
+            if (error === "Open GitHub") {
                 vscode.env.openExternal("https://github.com/AzMoza/aqueduct-helper/issues/new")
             }
         }

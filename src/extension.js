@@ -32,9 +32,10 @@ async function activate(context) {
 
 	cmd.exec("aqueduct --version", async (err, stdout) => {
 		if(err) {
-			let error = await vscode.window.showInformationMessage("Aqueduct is not installed. Woould you like to install it now?", "Yes Please", "No");
+			let error = await vscode.window.showInformationMessage("Aqueduct is not installed. Would you like to install it now?", "Yes Please", "No");
 			if(error === "Yes Please") {
-				cmd.exec("pub global install aqueduct", async (err) => {
+				vscode.window.showInformationMessage("Installing Aqueduct...");
+				cmd.exec("pub global activate aqueduct", async (err) => {
 					if(err) {
 						vscode.window.showErrorMessage("Aqueduct could not be installed");
 					} else {
@@ -43,12 +44,10 @@ async function activate(context) {
 							vscode.env.openExternal("https://aqueduct.io/docs/tut/getting-started/");
 						}
 					}
-				})
+				});
 			}
-		} else {
-			vscode.window.showInformationMessage(`Aqueduct is active at v${stdout.substring(22, stdout.length)}`)
 		}
-	})
+	});
 	
 	let disposableModelCommand = vscode.commands.registerCommand('extension.aquModel', () => model.command());
 	let disposableControllerCommand = vscode.commands.registerCommand('extension.aquController', () => controller.controller());

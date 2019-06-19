@@ -1,7 +1,11 @@
 # Change Log
-All notable changes to the Aqueduct Helper will be documented in this file. If you wish to request a feature please do so [here](https://github.com/AzMoza/aqueduct-snippets/issues/new).
+All notable changes to the Aqueduct Helper will be documented in this file. If you wish to request a feature please do so [here](https://github.com/AzMoza/aqueduct-helper/issues/new).
 
-## [0.3.1] - 2019-06-18
+## [0.3.3] - 2019-06-19
+#### Fixed
+- Aqueduct version being shown repeatedly on VS Code launch.
+
+## [0.3.1] - 2019-06-19
 #### Added
 - Create Aqueduct Projects Command
     - `aquCreate`: Creates either a default, DB or DB with auth project straight from VS Code.
