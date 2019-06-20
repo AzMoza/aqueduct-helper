@@ -28,7 +28,7 @@ module.exports = {
 
         const PROPERTIES = [];
 
-        while (property !== '') {
+        while (property !== '' && property !== undefined) {
             PROPERTIES.push(property);
             property = await vscode.window.showInputBox({
                 prompt: "Property Type and Property Name - exclude ';' (Press 'return' when finished)",
@@ -36,7 +36,8 @@ module.exports = {
             });
         }
 
-        const decleration = PROPERTIES.map(prop => `\t@Column(nullable: false) ${prop};\n`);
+        let decleration = PROPERTIES.map(prop => `\t@Column(nullable: false) ${prop};\n`);
+
         const fileContent = `
 // TODO: Update this import with your application name to import all required aqueduct imports.
 import '../application_name.dart';
@@ -53,5 +54,5 @@ ${decleration.join("")}
         const FILE_NAME = modelFileName.toLowerCase() + ".dart";
         
         await writer.writer(FULL_PATH, FILE_NAME, fileContent);
-    }
+    },
 }
