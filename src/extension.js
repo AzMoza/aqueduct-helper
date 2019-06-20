@@ -18,7 +18,6 @@ const DocsStatusBarItem = require('./components/DocsStatusBar.js');
  * @param {vscode.ExtensionContext} context
  */
 async function activate(context) {
-
 	let previousVersion = context.globalState.get("aquPreviousVersion");
 	let currentVersion = vscode.extensions.getExtension('azmoza.aqueduct-helper').packageJSON.version;
 
@@ -30,7 +29,7 @@ async function activate(context) {
 		context.globalState.update("aquPreviousVersion", currentVersion);
 	}
 
-	cmd.exec("aqueduct --version", async (err, stdout) => {
+	cmd.exec("aqueduct --version", async (err) => {
 		if(err) {
 			let error = await vscode.window.showInformationMessage("Aqueduct is not installed. Would you like to install it now?", "Yes Please", "No");
 			if(error === "Yes Please") {
