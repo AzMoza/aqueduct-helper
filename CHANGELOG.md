@@ -4,6 +4,11 @@ All notable changes to the Aqueduct Helper will be documented in this file. If y
 ## [0.4.0] - 2019-06-19
 #### Added
 - `aqu-relate`: Create a relationship annotation.
+#### Changed
+- When generating a model via the `aquModel` command `willUpdate()` and `willInsert()` have been added.
+- Status Bar:
+    - Moved to the left.
+    - Added an icon.
 #### Fixed
 - Aqueduct extension showing when not programming in Dart.
 - Pressing escape when creating a model creates a bunch of undifinded variables.

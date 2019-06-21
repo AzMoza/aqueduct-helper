@@ -1,16 +1,19 @@
 const vscode = require('vscode')
 
 module.exports = {
+    //* This function opens the home page for the Aqueduct docs when the status bar is clicked
     statusOpenDocs: async function() {
-        //* Opens the Aqueduct documentation when the status bar item is pressed
         try {
-            await vscode.env.openExternal("https://aqueduct.io/docs/");
+            vscode.env.openExternal("https://aqueduct.io/docs/");
         } catch (error) {
+            //* if the docs cannot be opened show an error message
             vscode.window.showErrorMessage("Oh No! The Aqueduct documentation count not be open.")
         }   
     },
+    //* This function controls what documentation page to open when the docs command is executed
     commandOpenDocs: async function() {
         const BASE_URL = "https://aqueduct.io/docs";
+        //* Creates a quick pick of all the different topics that can be opened.
         const TOPIC = await vscode.window.showQuickPick([
             "Tutorial",
             "Application Configuration",
@@ -29,6 +32,7 @@ module.exports = {
         });
 
         try {
+            //* Takes the selected input and opens the correct documentation page depending on that selection
             switch (TOPIC) {
                 case "Tutorial":
                     vscode.env.openExternal(`${BASE_URL}/tut/getting-started/`);

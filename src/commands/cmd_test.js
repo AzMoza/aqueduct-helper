@@ -4,16 +4,20 @@ const path = require('path');
 const writer = require('../files.js');
 
 module.exports = {
+    //* This function creates a test file.
     test: async function() {
+        //* Checks if a workspace is opened.
         if (!vscode.workspace.workspaceFolders) {
             return vscode.window.showErrorMessage("Please open a directory before running this command");
         }
 
+        //* Asks the user for a suitable name for the test file
         let testFileName = await vscode.window.showInputBox({
             prompt: "Enter the name of your test file (excluding .dart)",
             placeHolder: "user_test"
         });
 
+        //* Assigns the content of the file. 
         const FILE_CONTENT = `
 import 'harness/app.dart';
 
@@ -31,6 +35,7 @@ Future main() async {
         const FULL_PATH = path.join(vscode.workspace.rootPath, TEST_FILE_PATH);
         const FILE_NAME = testFileName.toLowerCase() + ".dart";
         
+        //* Calls the writer function to create the files (and folders if required).
         await writer.writer(FULL_PATH, FILE_NAME, FILE_CONTENT);
     }
 }

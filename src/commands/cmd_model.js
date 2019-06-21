@@ -42,7 +42,17 @@ module.exports = {
 // TODO: Update this import with your application name to import all required aqueduct imports.
 import '../application_name.dart';
     
-class ${modelName} extends ManagedObject<_${modelName}> implements _${modelName} {}
+class ${modelName} extends ManagedObject<_${modelName}> implements _${modelName} {
+  @override
+  void willUpdate() {
+    // TODO: Add anything here to change prior to being updated.
+  }
+
+  @override
+  void willInsert() {
+    // TODO: Add anything here to change prior to being inserted.
+  }
+}
     
 class _${modelName} {
 ${decleration.join("")}
