@@ -42,6 +42,13 @@
         ],
         "description": "Creates a primary key annotation."
     },
+    "Relate": {
+        "prefix": "aqu-relate",
+        "body": [
+            "@Relate(#${1:inverse}, isRequired: true, rule: DeleteRule.cascade) ${2:T} ${3:name};"
+        ],
+        "description": "Creates a relationship annotation."
+    },
     "Transaction": {
         "prefix": "aqu-transaction",
         "body": [

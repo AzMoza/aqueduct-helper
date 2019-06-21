@@ -2,6 +2,8 @@
 All notable changes to the Aqueduct Helper will be documented in this file. If you wish to request a feature please do so [here](https://github.com/AzMoza/aqueduct-helper/issues/new).
 
 ## [0.4.0] - 2019-06-19
+#### Added
+- `aqu-relate`: Create a relationship annotation.
 #### Fixed
 - Aqueduct extension showing when not programming in Dart.
 - Pressing escape when creating a model creates a bunch of undifinded variables.

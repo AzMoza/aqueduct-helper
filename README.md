@@ -29,6 +29,7 @@ Find below all the possible snippets you can use while creating your APIs.
 - `aqu-column`: Creates a column annotation.
 - `aqu-table`: Changes the name of the table definition.
 - `aqu-pk`: Creates a primary key annotation.
+- `aqu-relate`: Creates a relationship annotation.
 - `aqu-transaction`: Creates the basic transaction.
 
 ##### Auth
