@@ -25,7 +25,9 @@ module.exports = {
 
 		let boilerplate = await vscode.window.showInputBox({
 			prompt: "Would you like use to create basic HTTP get, post, put and delete requests? y/n"
-		});
+        });
+        
+        if (!boilerplate) return;
 
 		let fileContent;
 

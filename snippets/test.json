@@ -15,10 +15,10 @@
             "test(\"Exepects that GET /${1:endpoint} returns a list of JSON Objects with IDs\", () async {",
             "  final response = await harness.agent.get(\"/${1:endpoint}\");",
             "  expectResponse(response, 200,",
-            "   body: everyElement({",
-            "     \"id\": isNumber",
-            "   })",
-            " );",
+            "    body: everyElement({",
+            "      \"id\": isNumber",
+            "    })",
+            "  );",
             "});"
         ],
         "description": "Creates a simple test that expects the response to be a list of JSON objects which includes a ID which is a number."
