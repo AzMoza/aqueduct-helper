@@ -11,7 +11,7 @@ module.exports = {
         })
 
         //* Terminate the command if the name is null
-        if(name === "") return;
+        if(!name) return;
 
         //* Asks the user to select the location they want to save their new project
         let locationUri = await vscode.window.showOpenDialog({
@@ -20,13 +20,14 @@ module.exports = {
             canSelectMany: false,
         });
 
+        if(!locationUri) return;
+
         //* Extracts the file system path from the Uri array
         let path = locationUri[0].fsPath;
 
         //* Asks the user to select want project type they want for there API
         let template = await vscode.window.showQuickPick(["Default","Database","Database with Authentication"],
         {
-            canPickMany: false,
             ignoreFocusOut: true,
             placeHolder: "Choose a template for your Aqueduct API"
         });
@@ -43,10 +44,10 @@ module.exports = {
             case "Database with Authentication":
                 type = "db_and_auth";
                 break;
-            default:
-                type = "default";
-                break;
+            case undefined:
+                return vscode.window.showErrorMessage("Unable to create project as a template must be selected");
         }
+
         
         //* Checks the current OS.
         if (process.platform === "win32") {

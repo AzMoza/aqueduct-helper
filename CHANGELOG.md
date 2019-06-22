@@ -9,6 +9,7 @@ All notable changes to the Aqueduct Helper will be documented in this file. If y
 - Status Bar:
     - Moved to the left.
     - Added an icon.
+    - A Quick Pick is now shown when pressed allowing you to select what section of the documentation you want to visit.
 #### Fixed
 - Aqueduct extension showing when not programming in Dart.
 - Pressing escape when creating a model creates undifinded variables.

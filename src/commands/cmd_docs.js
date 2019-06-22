@@ -1,15 +1,6 @@
 const vscode = require('vscode')
 
 module.exports = {
-    //* This function opens the home page for the Aqueduct docs when the status bar is clicked
-    statusOpenDocs: async function() {
-        try {
-            vscode.env.openExternal("https://aqueduct.io/docs/");
-        } catch (error) {
-            //* if the docs cannot be opened show an error message
-            vscode.window.showErrorMessage("Oh No! The Aqueduct documentation count not be open.")
-        }   
-    },
     //* This function controls what documentation page to open when the docs command is executed
     commandOpenDocs: async function() {
         const BASE_URL = "https://aqueduct.io/docs";
@@ -27,7 +18,6 @@ module.exports = {
         ], 
         {
             ignoreFocusOut: true,
-            matchOnDescription: true,
             placeHolder: "Choose a topic to search"
         });
 
@@ -61,8 +51,7 @@ module.exports = {
                 case "Command Line Tools":
                     vscode.env.openExternal(`${BASE_URL}/cli/`);
                     break; 
-                default:
-                    vscode.window.showErrorMessage("Unable to open documentation");
+                case undefined:
                     break;
             }
         } catch (error) {

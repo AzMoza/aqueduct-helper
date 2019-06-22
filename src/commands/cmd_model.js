@@ -13,6 +13,8 @@ module.exports = {
             prompt: "Enter the name of your model file (excluding .dart)",
             placeHolder: "user"
         });
+
+        if (!modelFileName) return;
         
         let modelName = await vscode.window.showInputBox({
             prompt: "Enter the name of your model",
@@ -28,7 +30,12 @@ module.exports = {
 
         const PROPERTIES = [];
 
-        while (property !== '' && property !== undefined) {
+        while (property !== '') {
+            //* If escape has been pressed exit the creator
+            if(property === undefined) {
+                return;
+            }
+
             PROPERTIES.push(property);
             property = await vscode.window.showInputBox({
                 prompt: "Property Type and Property Name - exclude ';' (Press 'return' when finished)",

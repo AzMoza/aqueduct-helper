@@ -17,6 +17,8 @@ module.exports = {
             placeHolder: "user_test"
         });
 
+        if(!testFileName) return;
+
         //* Assigns the content of the file. 
         const FILE_CONTENT = `
 import 'harness/app.dart';

@@ -63,14 +63,12 @@ async function activate(context) {
 	let disposableControllerCommand = vscode.commands.registerCommand('extension.aquController', () => controller.controller());
 	let disposableCreatorCommand = vscode.commands.registerCommand('extension.aquCreate', () => create.create());
 	let disposableTestCommand = vscode.commands.registerCommand('extension.aquTest', () => test.test());
-	let disposableStatusDocsCommand = vscode.commands.registerCommand('extension.aquStatusDocs', () => docs.statusOpenDocs());
 	let disposableDocsCommand = vscode.commands.registerCommand('extension.aquDocs', () => docs.commandOpenDocs());
 
 	context.subscriptions.push(disposableModelCommand);
 	context.subscriptions.push(disposableControllerCommand);
 	context.subscriptions.push(disposableCreatorCommand);
 	context.subscriptions.push(disposableTestCommand);
-	context.subscriptions.push(disposableStatusDocsCommand);
 	context.subscriptions.push(disposableDocsCommand);
 	context.subscriptions.push(new DocsStatusBarItem());
 }

@@ -9,7 +9,7 @@ class DocsStatusBarItem {
 		this._statusBarItem.text = "$(browser)  Aqueduct Docs";
 		this._statusBarItem.tooltip = "Opens the Aquedct Documentation";
 		//* Assigns the command that will be executed when the status bar is clicked
-		this._statusBarItem.command = "extension.aquStatusDocs";
+		this._statusBarItem.command = "extension.aquDocs";
 		//* Shows the status bar
         this._statusBarItem.show();
 	}
