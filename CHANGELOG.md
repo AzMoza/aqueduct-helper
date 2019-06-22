@@ -11,7 +11,9 @@ All notable changes to the Aqueduct Helper will be documented in this file. If y
     - Added an icon.
 #### Fixed
 - Aqueduct extension showing when not programming in Dart.
-- Pressing escape when creating a model creates a bunch of undifinded variables.
+- Pressing escape when creating a model creates undifinded variables.
+- Snippets being formatted incorrectly.
+- Snippets including typos.
 
 ## [0.3.3] - 2019-06-19
 #### Fixed

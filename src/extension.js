@@ -23,7 +23,7 @@ async function activate(context) {
 	//* Checks the current version of the extension for the package.json file and compares it with the previous version installed on the users machine.
 	if(previousVersion !== currentVersion) {
 		//* If the versions are different display a message telling the user there has been an update and check the chnage logs
-		let value = await vscode.window.showInformationMessage("Aqueduct Helper has been updated! Check the release notes for more details.", "Show Me", "No Thanks");
+		let value = await vscode.window.showInformationMessage(`Aqueduct Helper has been updated to v${currentVersion}. Check the release notes for more details.`, "Show Me", "No Thanks");
 		if(value === "Show Me") {
 			//* if the user wants to see the change notes navigate them to an external link (chnage log page).
 			vscode.env.openExternal("https://marketplace.visualstudio.com/items/AzMoza.aqueduct-helper/changelog")

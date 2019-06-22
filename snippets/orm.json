@@ -5,9 +5,8 @@
             "class ${1:Name} extends ManagedObject<_${1:Name}> implements _${1:Name} {}",
             "",
             "class _$1 {",
-            "   @Column(primaryKey: true)",
-            "   int id;",
-            "   $2",
+            "  @Column(primaryKey: true)",
+            "  int id;",
             "}"
         ],
         "description": "Creates a basic model that replicates a database table."
@@ -16,7 +15,7 @@
         "prefix": "aqu-controller",
         "body": [
             "class ${1:Name} extends ResourceController {",
-            "   $0",
+            "  $0",
             "}"
         ],
         "description": "Creates a basic resource controller."
@@ -24,21 +23,21 @@
     "Column Annotation": {
         "prefix": "aqu-column",
         "body": [
-            "@Column(nullable: ${1:fasle}, unique: ${2:false}, defaultValue: ${3:null})"
+            "@Column(nullable: ${1:false}, unique: ${2:false}, defaultValue: ${3:null})"
         ],
         "description": "Creates a column annotation."
     },
     "Table Annotation": {
         "prefix": "aqu-table",
         "body": [
-            "@Table(name: ${1:fasle})"
+            "@Table(name: \"${1:TableName}\")"
         ],
         "description": "Changes the name of the table definition."
     },
     "Primary Key": {
         "prefix": "aqu-pk",
         "body": [
-            "@primaryKey int ${1:id}"
+            "@primaryKey int ${1:id};"
         ],
         "description": "Creates a primary key annotation."
     },
@@ -53,11 +52,11 @@
         "prefix": "aqu-transaction",
         "body": [
             "try {",
-            "   await context.transaction((transaction) async {",
-            "       $0",
-            "   });",
+            "  await context.transaction((transaction) async {",
+            "    $0",
+            "  });",
             "} on Rollback catch(rolllback) {",
-            "   print(\"${rollback.reason}\");",
+            "  print(\"${rollback.reason}\");",
             "}"
         ],
         "description": "Creates the basic transaction."

@@ -3,10 +3,10 @@
         "prefix": "aqu-link-func",
         "body": [
             "router",
-            "   .route(\"${1:/route}\")",
-            "   .linkFunction((request) async {",
-            "       return Response.ok({$2:{\"status\": \"200 OK\"});",
-            "   });"
+            "  .route(\"/${1:route}\")",
+            "  .linkFunction((request) async {",
+            "    return Response.ok({\"status\": \"200 OK\"});",
+            "  });"
         ],
         "description": "Creates a basic link function."
     },
@@ -14,8 +14,8 @@
         "prefix": "aqu-link",
         "body": [
             "router",
-            "   .route(\"$1\")",
-            "   .link(() => $2);"
+            "  .route(\"/$1\")",
+            "  .link(() => ${2:Controller()});"
         ],
         "description": "Creates a basic link route."
     },
@@ -23,8 +23,8 @@
         "prefix": "aqu-file",
         "body": [
             "router",
-            "   .route(\"/${1:files}/*\")",
-            "   .link(() => FileController({2:public}/));"
+            "  .route(\"/${1:files}/*\")",
+            "  .link(() => FileController(\"${2:public}/\"));"
         ],
         "description": "Returns the content of a file."
     },
@@ -32,12 +32,12 @@
         "prefix": "aqu-socket",
         "body": [
             "router",
-            "    .route(\"/connect\")",
-            "    .linkFunction((req) async {",
-            "        var socket = await WebSocketTransformer.upgrade(req.raw);",
-            "        socket.listen($1);",
-            "        return null;",
-            "    });"
+            "  .route(\"/connect\")",
+            "  .linkFunction((req) async {",
+            "     var socket = await WebSocketTransformer.upgrade(req.raw);",
+            "     socket.listen($1);",
+            "     return null;",
+            "  });"
         ],
         "description": "Creates a basic websocket server."
     }

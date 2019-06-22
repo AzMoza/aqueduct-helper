@@ -3,13 +3,13 @@
         "prefix": "aqu-config",
         "body": [
             "class ${1:App}Configuration extends Configuration {",
-            "   ${1:App}Configuration(String fileName) : super.fromFile(fileName);",
-            "   $0",
-            "   DatabaseConnectionConfiguration database;",
-            "   String apiBaseURL;",
-            "   $0",
-            "   @optionalConfiguration",
-            "   int identifier;",
+            "  ${1:App}Configuration(String fileName) : super.fromFile(fileName);",
+            "  $0",
+            "  DatabaseConnectionConfiguration database;",
+            "  String apiBaseURL;",
+            "  $0",
+            "  @optionalConfiguration",
+            "  int identifier;",
             "}"
         ],
         "description": "Creates a subclass for reading configuration file"
