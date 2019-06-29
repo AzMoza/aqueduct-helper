@@ -73,7 +73,7 @@ module.exports = {
                     vscode.commands.executeCommand("vscode.openFolder", folderUrl, false)
                 });
             } else {
-                vscode.window.showInformationMessage("We'll take it from here! Creating Aqueduct files. This may take take a few minutes.");
+                vscode.window.showInformationMessage("We'll take it from here! Creating Aqueduct files. This may take a few minutes.");
                 exec.exec(`cd ${path} && aqueduct create -t ${type} ${name}`, (err, stdout, stderr) => {
                     if (err) {
                         console.log(err);
@@ -91,7 +91,7 @@ module.exports = {
             }
         //* Checks if the current OS is either Mac OS or Linux
         } else if (process.platform === "darwin" || process.platform === "linux") {
-            vscode.window.showInformationMessage("We'll take it from here! Creating Aqueduct files. This may take take a few minutes.");
+            vscode.window.showInformationMessage("We'll take it from here! Creating Aqueduct files. This may take a few minutes.");
             //* CD into the selected directory and run the aqueduct create command
             exec.exec(`cd ${path} && aqueduct create -t ${type} ${name}`, (err, stdout, stderr) => {
                 if (err) {

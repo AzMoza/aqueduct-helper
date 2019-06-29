@@ -1,7 +1,11 @@
 # Change Log
 All notable changes to the Aqueduct Helper will be documented in this file. If you wish to request a feature please do so [here](https://github.com/AzMoza/aqueduct-helper/issues/new).
 
-## [0.4.0] - 2019-06-19
+## [0.4.1] - 2019-06-29
+#### Fixed
+- Create information message typo.
+
+## [0.4.0] - 2019-06-22
 #### Added
 - `aqu-relate`: Create a relationship annotation.
 #### Changed
