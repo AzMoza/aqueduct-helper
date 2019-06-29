@@ -3,9 +3,9 @@
         "prefix": "aqu-config",
         "body": [
             "class ${1:App}Configuration extends Configuration {",
-            "  ${1:App}Configuration(String fileName) : super.fromFile(fileName);",
+            "  ${1:App}Configuration(String fileName) : super.fromFile(File(fileName));",
             "  $0",
-            "  DatabaseConnectionConfiguration database;",
+            "  DatabaseConfiguration database;",
             "  String apiBaseURL;",
             "  $0",
             "  @optionalConfiguration",

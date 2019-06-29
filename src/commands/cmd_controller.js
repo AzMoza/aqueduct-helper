@@ -37,25 +37,25 @@ module.exports = {
 import '../application_name.dart';
 
 class ${CONTROLLER_NAME} extends ResourceController {
-    @Operation.get()
-    Future<Response> get() async {
-        //TODO: Implement get method
-    }
+  @Operation.get()
+  Future<Response> get() async {
+    //TODO: Implement get method
+  }
 
-    @Operation.post()
-    Future<Response> post() async {
-        //TODO: Implement post method
-    }
+  @Operation.post()
+  Future<Response> post() async {
+    //TODO: Implement post method
+  }
 
-    @Operation.put()
-    Future<Response> put() async {
-        //TODO: Implement put method
-    }
+  @Operation.put()
+  Future<Response> put() async {
+    //TODO: Implement put method
+  }
 
-    @Operation.delete()
-    Future<Response> delete() async {
-        //TODO: Implement delete method
-    }
+  @Operation.delete()
+  Future<Response> delete() async {
+    //TODO: Implement delete method
+  }
 }`
 		} else {
 			fileContent = `

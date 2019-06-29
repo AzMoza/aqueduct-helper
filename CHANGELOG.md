@@ -4,6 +4,8 @@ All notable changes to the Aqueduct Helper will be documented in this file. If y
 ## [0.4.1] - 2019-06-29
 #### Fixed
 - Create information message typo.
+- Incorrect formmationg on the config snippet.
+- Incorrect formatting on the boilerplate controller template.
 
 ## [0.4.0] - 2019-06-22
 #### Added
