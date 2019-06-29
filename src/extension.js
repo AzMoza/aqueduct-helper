@@ -25,7 +25,7 @@ async function activate(context) {
 		//* If the versions are different display a message telling the user there has been an update and check the chnage logs
 		let value = await vscode.window.showInformationMessage(`Aqueduct Helper has been updated to v${currentVersion}. Check the release notes for more details.`, "Show Me", "No Thanks");
 		if(value === "Show Me") {
-			//* if the user wants to see the change notes navigate them to an external link (chnage log page).
+			//* If the user wants to see the change notes navigate them to an external link (chnage log page).
 			vscode.env.openExternal("https://marketplace.visualstudio.com/items/AzMoza.aqueduct-helper/changelog")
 		}
 		//* Update the previous version to the current version

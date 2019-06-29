@@ -73,6 +73,5 @@ class ${CONTROLLER_NAME} extends ResourceController {
         const FILE_NAME = CONTROLLER_FILE_NAME.toLowerCase() + ".dart";
         
         await writer.writer(FULL_PATH, FILE_NAME, fileContent);
-
     }
 }
